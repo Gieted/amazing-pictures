@@ -19,15 +19,12 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-    
-    - name: Install Firebase CLI
-      run: npm i -g firebase-tools
-      
-    - name: Install Angular CLI
-      run: npm i -g @angular/cli
 
     - name: Build
       run: ng build --prod
+    
+    - name: Install Firebase CLI
+      run: npm i -g firebase-tools
     
     - name: Deploy to Firebase
       run: firebase deploy --token "$FIREBASE_TOKEN"
