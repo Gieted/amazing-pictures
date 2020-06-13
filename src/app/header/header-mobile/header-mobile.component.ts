@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FormControl } from '@angular/forms';
 import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
-import { PicturesService } from '../../pictures.service';
+import { PicturesService } from '../../pictures/pictures.service';
 
 @Component({
   selector: 'app-header-mobile',

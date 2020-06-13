@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PicturesService } from '../pictures/pictures.service';
+import Picture from '../pictures/Picture';
 
 @Component({
   selector: 'app-browser',
@@ -6,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./browser.component.css']
 })
 export class BrowserComponent implements OnInit {
+  pictures: Picture[];
 
-  constructor() { }
+  constructor(private picturesService: PicturesService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.pictures = await this.picturesService.fetchPictures();
   }
 }

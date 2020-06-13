@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
-import { PicturesService } from '../../pictures.service';
+import { PicturesService } from '../../pictures/pictures.service';
 
 @Component({
   selector: 'app-header-desktop',
