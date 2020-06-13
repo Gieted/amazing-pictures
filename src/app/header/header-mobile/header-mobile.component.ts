@@ -73,7 +73,7 @@ export class HeaderMobileComponent implements OnInit {
       this.hide = false;
     }
 
-    if (this.scrolledDown > 100 && this.lastHeight !== 0) {
+    if (this.scrolledDown > 100 && this.lastHeight !== 0 && currentHeight > 800) {
       this.hide = true;
     }
 

@@ -36,6 +36,7 @@ import { DeleteDialogComponent } from './profile/delete-dialog/delete-dialog.com
 import { PictureUploadComponent } from './picture-upload/picture-upload.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SquareDirective } from './square.directive';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     HeaderMobileComponent,
     DeleteDialogComponent,
     PictureUploadComponent,
+    SquareDirective,
   ],
   imports: [
     BrowserModule,

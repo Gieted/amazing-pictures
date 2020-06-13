@@ -1,6 +1,26 @@
+:host {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#content {
+  flex: 1;
+  flex-wrap: wrap;
+  display: flex;
+}
+
 img {
-  height: auto;
-  width: 50%;
+  min-width: 100px;
+  max-width: 200px;
+  height: 100px;
+  flex: 1;
   user-select: none;
   image-orientation: from-image;
+  object-fit: cover;
+  font-size: 0;
+}
+
+mat-spinner {
+  position: absolute;
 }
