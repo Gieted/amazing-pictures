@@ -1,6 +1,7 @@
 :host {
   display: flex;
   align-content: center;
+  margin-right: -3px;
 }
 
 #content {
