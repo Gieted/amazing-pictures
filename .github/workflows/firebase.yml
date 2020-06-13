@@ -22,9 +22,15 @@ jobs:
     
     - name: Install Firebase CLI
       run: npm i -g firebase-tools
+      
+    - name: Install Angular CLI
+      run: npm i -g @angular/cli
 
     - name: Build
       run: ng build --prod
     
     - name: Deploy to Firebase
-      run: firebase deploy
+      run: firebase deploy --token "$FIREBASE_TOKEN"
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        FIREBASE_PROJECT: amazing-pictures-12
