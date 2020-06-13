@@ -1,4 +1,6 @@
 <div id="content">
   <img *ngFor="let picture of pictures" appSquare [alt]="picture.title" [src]="picture.url">
 </div>
-<mat-spinner *ngIf="loading" mode="indeterminate"></mat-spinner>
+<div id="spinner-wrapper">
+  <mat-spinner *ngIf="loading" mode="indeterminate"></mat-spinner>
+</div>

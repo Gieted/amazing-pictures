@@ -1,11 +1,9 @@
 :host {
   display: flex;
   align-content: center;
-  justify-content: center;
 }
 
 #content {
-  flex: 1;
   flex-wrap: wrap;
   display: flex;
 }
@@ -25,4 +23,11 @@ img {
 
 mat-spinner {
   position: absolute;
+}
+
+#spinner-wrapper {
+  display: flex;
+  flex: 1;
+  left: 0;
+  justify-content: center;
 }
