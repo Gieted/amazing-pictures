@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>{{ mode === 'complete' ? 'Welcome to Amazing Pictures!' : 'Edit your profile'}}</h2>
+<mat-dialog-content>
+  <div *ngIf="mode === 'complete'">Please complete your profile to continue:</div>
+  <form id="profile-form" [formGroup]="profile" (ngSubmit)="updateProfile()">
+    <div id="picture-upload-section">
+      <button *ngIf="!uploadTask" mat-icon-button class="upload-photo" (click)="selectPicture()" type="button">
+        <img id="profile-picture" *ngIf="accountService.user?.photoURL" [src]="accountService.user.photoURL"
+             alt="Profile picture">
+        <span id="icon-wrapper">
+          <mat-icon [className]="accountService.user?.photoURL ? 'hidden' : ''">add_a_photo</mat-icon>
+        </span>
+        <span *ngIf="accountService.user?.photoURL" id="upload-background"></span>
+      </button>
+      <input #pictureInput id="picture-input" type="file" aria-label="Upload a profile picture"
+             accept="image/png, image/jpeg" formControlName="picture" (change)="uploadPicture($event)">
+      <mat-spinner *ngIf="uploadTask" [mode]="uploadPercent ? 'determinate' : 'indeterminate'"
+                   [value]="uploadPercent | async" diameter="60"></mat-spinner>
+    </div>
+    <mat-form-field appearance="outline" [hideRequiredMarker]="mode === 'edit'">
+      <mat-label>Display name</mat-label>
+      <input size="1" matInput formControlName="displayName" aria-label="Display name" required maxlength="16"
+             (keydown)="onInputKeydown($event)">
+      <mat-error *ngIf="displayNameForm.errors?.required">Please choose a name visible to other users</mat-error>
+      <mat-error *ngIf="displayNameForm.errors?.maxlength">Your name can't be longer than 16 characters</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button *ngIf="mode === 'edit'" mat-button (click)="dialogRef.close()">Cancel</button>
+  <div id="free-space"></div>
+  <button #continueButton mat-flat-button color="primary" type="submit" form="profile-form">{{ mode === 'edit'
+    ? 'Edit'
+    : 'Continue'}}</button>
+</mat-dialog-actions>

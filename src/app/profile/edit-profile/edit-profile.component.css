@@ -1,0 +1,74 @@
+mat-dialog-actions {
+  justify-content: flex-end;
+}
+
+#profile-form {
+  margin-top: 20px;
+}
+
+mat-form-field {
+  display: block;
+}
+
+#free-space {
+  flex: 1;
+}
+
+.upload-photo {
+  background-color: hsl(0, 0%, 89%);
+  height: 100px;
+  width: 100px;
+}
+
+#profile-picture {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  image-orientation: from-image;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  font-size: 0;
+  top: 0;
+  left: 0;
+}
+
+#picture-input {
+  position: absolute;
+  visibility: hidden;
+}
+
+#picture-upload-section {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+#icon-wrapper {
+  z-index: 1;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+button.upload-photo:not(:hover) .hidden {
+  visibility: hidden;
+}
+
+button:hover #upload-background {
+  opacity: .7;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

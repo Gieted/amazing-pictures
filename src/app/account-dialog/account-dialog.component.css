@@ -1,0 +1,8 @@
+#error-message {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+app-sing-in, app-sing-up, app-reset-password {
+  flex: 1;
+}

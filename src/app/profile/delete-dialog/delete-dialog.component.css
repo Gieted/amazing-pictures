@@ -1,0 +1,21 @@
+#password {
+  margin-top: 20px;
+}
+
+mat-dialog-actions {
+  justify-content: space-between;
+}
+
+mat-error#error {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+mat-form-field {
+  flex: 1;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+}

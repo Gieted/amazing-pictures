@@ -1,0 +1,26 @@
+<div *ngIf="profile" id="profile">
+  <div id="profile-card">
+    <mat-card class="mat-elevation-z3">
+      <div>
+        <h1 *ngIf="me" id="title">My profile</h1>
+        <img alt="Profile picture" id="picture" [src]="(pictureUrl | async) || defaultProfilePictureUrl">
+        <div id="name">{{ profile.displayName }}</div>
+      </div>
+      <button *ngIf="me" mat-icon-button id="more" [mat-menu-trigger-for]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu xPosition="before">
+        <button mat-menu-item (click)="edit()">Edit</button>
+        <button mat-menu-item id="delete" (click)="delete()">Delete</button>
+      </mat-menu>
+    </mat-card>
+  </div>
+  <app-browser></app-browser>
+</div>
+
+<mat-spinner *ngIf="profile === undefined">
+
+</mat-spinner>
+<div *ngIf="profile === null" id="no-such-profile">
+  No such profile 😅
+</div>

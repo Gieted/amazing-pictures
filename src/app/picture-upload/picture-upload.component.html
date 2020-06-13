@@ -1,0 +1,39 @@
+<mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+<h2 mat-dialog-title>Post a picture</h2>
+<mat-dialog-content [style]="orientation === 'horizontal' ? 'display: flex' : ''">
+  <div id="image-wrapper" [style]="orientation === 'horizontal' ? 'flex: 1' : ''">
+    <div>
+      <img [hidden]="!imageLoaded" [src]="imgUrl" alt="Your picture"
+           [style]="orientation === 'vertical' ? 'width: 100%' : 'height: 100%'"
+           (load)="imageLoaded = true">
+      <div *ngIf="!imageLoaded" id="placeholder"></div>
+    </div>
+  </div>
+  <form id="upload-form" [formGroup]="uploadForm">
+    <mat-form-field hideRequiredMarker appearance="outline">
+      <mat-label>Title</mat-label>
+      <input size="1" matInput aria-label="Title" formControlName="title" required maxlength="50">
+      <mat-error *ngIf="titleForm.errors?.required">Please select a title for your picture</mat-error>
+      <mat-error *ngIf="titleForm.errors?.maxlength">Title can't be longer than 50 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tags (optional)</mat-label>
+      <mat-chip-list #tagsList>
+        <mat-chip *ngFor="let tag of tags" (removed)="removeTag(tag)" selectable="false">
+          {{ tag }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input size="1"
+               aria-label="Tags"
+               [matChipInputFor]="tagsList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               matChipInputAddOnBlur
+               (matChipInputTokenEnd)="addTag($event)">
+      </mat-chip-list>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button #postButton (click)="post()" mat-flat-button color="primary" type="submit" form="upload-form">Post</button>
+</mat-dialog-actions>

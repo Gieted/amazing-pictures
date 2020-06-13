@@ -1,0 +1,12 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#free-space {
+  height: 100px;
+  width: 100%;
+  flex-shrink: 0;
+}

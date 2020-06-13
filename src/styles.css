@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+input {
+  border: none;
+}
+
+mat-icon {
+  user-select: none;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+*:focus {
+  outline: none;
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.center-vertically {
+  display: flex;
+  align-items: center;
+}

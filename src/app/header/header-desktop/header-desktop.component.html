@@ -1,0 +1,32 @@
+<div class="fixed-wrapper">
+  <mat-toolbar>
+    <div>
+      <a routerLink="">Amazing Pictures</a>
+    </div>
+    <div id="search">
+      <app-search-box></app-search-box>
+    </div>
+    <div class="align-right">
+      <button *ngIf="accountService.user" mat-icon-button id="upload-picture" (click)="selectPicture()">
+        <mat-icon>add_photo_alternate</mat-icon>
+      </button>
+      <input #pictureInput id="picture-input" type="file" aria-label="Upload a profile picture"
+             accept="image/png, image/jpeg" (change)="uploadPicture($event)">
+      <button *ngIf="accountService.user !== undefined && !accountService.user" mat-stroked-button color="primary"
+              (click)="accountService.openSingInDialog()" id="sing-in">
+      <span class="center-vertically">
+        <mat-icon>account_circle</mat-icon><span>SIGN IN</span>
+      </span>
+      </button>
+      <img class="profile-picture" *ngIf="accountService.user"
+           [src]="accountService.user.photoURL || defaultProfilePictureUrl" alt="profile-picture"
+           [mat-menu-trigger-for]="accountMenu">
+      <mat-menu #accountMenu>
+        <a mat-menu-item [routerLink]="'profile/' + accountService.user?.uid">Profile</a>
+        <button mat-menu-item (click)="accountService.signOut()">Sign out</button>
+      </mat-menu>
+      <div *ngIf="accountService.user === undefined" id="profile-picture-placeholder"></div>
+    </div>
+  </mat-toolbar>
+  <mat-progress-bar *ngIf="progressBar.show" mode="indeterminate"></mat-progress-bar>
+</div>

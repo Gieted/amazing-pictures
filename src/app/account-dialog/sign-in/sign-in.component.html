@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Sign in to Amazing Pictures</h2>
+<mat-dialog-content>
+  <form id='sing-in-form' [formGroup]="singInForm" (ngSubmit)="signIn()">
+    <mat-form-field hideRequiredMarker>
+      <input size="1" matInput aria-label="Email" type="email" formControlName="email" placeholder="Email" required>
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="emailForm.errors?.required">Please enter your email address</mat-error>
+      <mat-error *ngIf="emailForm.errors?.email">Please provide a valid email address</mat-error>
+    </mat-form-field>
+    <mat-form-field hideRequiredMarker id="password">
+      <input size="1" matInput aria-label="Password" type="password" formControlName="password" placeholder="Password" required>
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error>Please enter your password</mat-error>
+    </mat-form-field>
+  </form>
+  <button id="forgot-password" mat-button color="primary" (click)="resetPassword.emit()">Forgot password?</button>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="register.emit()">Create account</button>
+  <button #singInButton mat-flat-button color="primary" type="submit" form="sing-in-form">Sign in</button>
+</mat-dialog-actions>

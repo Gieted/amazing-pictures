@@ -1,0 +1,27 @@
+<mat-progress-bar *ngIf="progressBar.show" mode="indeterminate"></mat-progress-bar>
+<mat-card class="mat-elevation-z2" (focusin)="onFocusIn()" (focusout)="onFocusOut()" (keydown)="onKeyDown($event)"
+          [style.top]="hide ? '-70px' : '0'">
+  <a mat-icon-button routerLink="">
+    <mat-icon>home</mat-icon>
+  </a>
+  <input #input aria-label="Search" placeholder="Search" [formControl]="search">
+  <button mat-icon-button id="clear" *ngIf="displayClear" (click)="clear()" (mousedown)="$event.preventDefault()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <img class="profile-picture" *ngIf="accountService.user !== undefined && !accountService.user"
+       (click)="accountService.openSingInDialog()"
+       alt="Sing in" [src]="defaultProfilePictureUrl">
+  <img class="profile-picture" *ngIf="accountService.user"
+       [src]="accountService.user.photoURL || defaultProfilePictureUrl" alt="Profile picture"
+       [mat-menu-trigger-for]="accountMenu">
+  <mat-menu #accountMenu>
+    <a mat-menu-item [routerLink]="'profile/' + accountService.user?.uid">Profile</a>
+    <button mat-menu-item (click)="accountService.signOut()">Sign out</button>
+  </mat-menu>
+  <div *ngIf="accountService.user === undefined" id="profile-picture-placeholder"></div>
+</mat-card>
+<button *ngIf="accountService.user" mat-fab id="upload-picture" (click)="selectPicture()">
+  <mat-icon>add_photo_alternate</mat-icon>
+</button>
+<input #pictureInput id="picture-input" type="file" aria-label="Upload a profile picture"
+       accept="image/png, image/jpeg" (change)="uploadPicture($event)">

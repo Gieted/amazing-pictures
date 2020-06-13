@@ -1,0 +1,11 @@
+mat-dialog-actions {
+  justify-content: space-between;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.password {
+  margin-top: 10px;
+}

@@ -1,0 +1,8 @@
+<mat-card [ngClass]="active ? 'active' : ''" class="mat-elevation-z3" (focusin)="onFocusIn()" (focusout)="onFocusOut()"
+          (keydown)="onKeyDown($event)">
+  <mat-icon>search</mat-icon>
+  <input size="1" #input aria-label="Search" placeholder="Search" [formControl]="search">
+  <button mat-icon-button id="clear" *ngIf="displayClear" (click)="clear()" (mousedown)="$event.preventDefault()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-card>

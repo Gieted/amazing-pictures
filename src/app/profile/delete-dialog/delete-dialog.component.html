@@ -1,0 +1,14 @@
+<mat-error id="error" *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+<h2 mat-dialog-title>Delete account</h2>
+<mat-dialog-content>
+  <div>This action will permanently delete your account.</div>
+  <mat-form-field id="password" hideRequiredMarker>
+    <input matInput type="password" aria-label="Password" [formControl]="password" placeholder="Enter your password" required>
+    <mat-icon matSuffix>lock</mat-icon>
+    <mat-error *ngIf="password.errors?.required">You must enter your password to proceed</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button #deleteButton mat-flat-button color="warn" (click)="delete()">Delete my account</button>
+</mat-dialog-actions>

@@ -1,0 +1,50 @@
+mat-toolbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12);
+}
+
+mat-toolbar > * {
+  flex: 1;
+}
+
+#search {
+  max-width: 500px;
+  margin: 0 50px;
+}
+
+button#sing-in mat-icon {
+  margin-right: 5px;
+}
+
+.profile-picture {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+  font-size: 0;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  image-orientation: from-image;
+}
+
+#profile-picture-placeholder {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: hsl(0, 0%, 89%);
+}
+
+.fixed-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+#upload-picture {
+  margin-right: 20px;
+}
+
+#picture-input {
+  display: none;
+}

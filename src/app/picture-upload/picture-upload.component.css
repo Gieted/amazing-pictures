@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+mat-dialog-content {
+  flex: 1;
+  flex-direction: column;
+}
+
+img {
+  user-select: none;
+  font-size: 0;
+  image-orientation: from-image;
+}
+
+#image-wrapper {
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+#image-wrapper > div {
+  height: 100%;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+form > * {
+  width: 100%;
+  min-width: 0;
+  margin-top: 10px;
+}
+
+mat-dialog-actions {
+  justify-content: space-between;
+}
+
+#placeholder {
+  height: 400px;
+  width: 100%;
+  background-color: hsl(0, 0%, 89%);
+}
+
+:host > mat-error {
+  text-align: center;
+}

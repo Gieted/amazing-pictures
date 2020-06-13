@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Create your Amazing Pictures account</h2>
+<mat-dialog-content>
+  <form id='sing-up-form' [formGroup]="singUpForm" (ngSubmit)="singUp()">
+    <mat-form-field>
+      <input matInput aria-label="Email" type="email" formControlName="email" placeholder="Email" required>
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="emailForm.errors?.required">Email is required</mat-error>
+      <mat-error *ngIf="emailForm.errors?.email">Please provide a valid email address</mat-error>
+    </mat-form-field>
+    <mat-form-field class="password">
+      <input matInput aria-label="Password" type="password" formControlName="password" placeholder="Password" required
+             minlength="7">
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+      <mat-error *ngIf="password.value && password.errors?.minlength">Password must be at least 7 characters long
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="password">
+      <input matInput aria-label="Confirm password" type="password" formControlName="confirmPassword"
+             placeholder="Confirm password" required>
+      <mat-icon matSuffix>lock</mat-icon>
+      <mat-error *ngIf="confirmPassword.errors?.required">Please confirm your password</mat-error>
+      <mat-error *ngIf="confirmPassword.value && confirmPassword.errors?.sameTo">Passwords must be the same</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="signIn.emit()">Sign in instead</button>
+  <button #singUpButton mat-flat-button color="primary" type="submit" form="sing-up-form">Sing up
+  </button>
+</mat-dialog-actions>

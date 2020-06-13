@@ -1,0 +1,4 @@
+<mat-error *ngIf="errorMessage" id="error-message">{{ errorMessage }}</mat-error>
+<app-sing-in *ngIf="mode === SingInMode.Existing" (register)="mode = SingInMode.Create" (resetPassword)="mode = SingInMode.Reset" [email]="email"></app-sing-in>
+<app-sing-up *ngIf="mode === SingInMode.Create" (signIn)="mode = SingInMode.Existing" [email]="email"></app-sing-up>
+<app-reset-password *ngIf="mode === SingInMode.Reset" (back)="mode = SingInMode.Existing" [email]="email"></app-reset-password>
