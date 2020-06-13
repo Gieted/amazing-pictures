@@ -10,8 +10,9 @@ service firebase.storage {
     }
 
     match /pictures {
-      allow read: if true;
+      allow list: if true;
       match /{pictureId} {
+        allow read: if true;
         allow create: if request.auth.uid != null;
       }
     }
