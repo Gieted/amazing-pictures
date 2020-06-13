@@ -10,6 +10,7 @@ import { BrowserService } from './browser.service';
 })
 export class BrowserComponent implements OnInit {
   pictures: Picture[];
+  loading = false;
 
   constructor(private picturesService: PicturesService, private browserService: BrowserService) { }
 
@@ -19,6 +20,8 @@ export class BrowserComponent implements OnInit {
   }
 
   async refreshPictures() {
+    this.loading = true;
     this.pictures = await this.picturesService.fetchPictures();
+    this.loading = false;
   }
 }
