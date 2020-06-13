@@ -19,6 +19,8 @@ img {
   image-orientation: from-image;
   object-fit: cover;
   font-size: 0;
+  margin-right: 3px;
+  margin-bottom: 3px;
 }
 
 mat-spinner {
