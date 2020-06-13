@@ -2,4 +2,5 @@ img {
   height: auto;
   width: 50%;
   user-select: none;
+  image-orientation: from-image;
 }
