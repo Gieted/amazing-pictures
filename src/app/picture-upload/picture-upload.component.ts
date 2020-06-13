@@ -17,6 +17,7 @@ import { AccountService } from '../account.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ProfileService } from '../profile/profile.service';
 import Profile from '../profile/Profile';
+import { BrowserService } from '../browser/browser.service';
 
 @Component({
   selector: 'app-picture-upload',
@@ -50,7 +51,8 @@ export class PictureUploadComponent implements OnInit {
               private accountService: AccountService,
               private firestore: AngularFirestore,
               private profileService: ProfileService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private browserService: BrowserService) {
 
     this.file = data.file;
     this.errorMessage = data.errorMessage;
@@ -146,6 +148,8 @@ export class PictureUploadComponent implements OnInit {
       } finally {
         this.progressBar.show = false;
       }
+
+      this.browserService.refresh.emit();
     }
   }
 
