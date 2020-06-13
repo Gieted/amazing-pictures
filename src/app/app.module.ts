@@ -35,6 +35,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { DeleteDialogComponent } from './profile/delete-dialog/delete-dialog.component';
 import { PictureUploadComponent } from './picture-upload/picture-upload.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MatChipsModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
