@@ -1,7 +1,7 @@
 {
-  "name": "amazing-pictures",
-  "short_name": "amazing-pictures",
-  "theme_color": "#1976d2",
+  "name": "Amazing Pictures",
+  "short_name": "AmazingPicutres",
+  "theme_color": "#fff",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
