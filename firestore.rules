@@ -11,6 +11,7 @@ service cloud.firestore {
       match /{pictureId} {
             allow read: if true;
             allow create: if request.auth.uid != null;
+            allow delete: if resource.data.owner == request.auth.uid
       }
     }
   }

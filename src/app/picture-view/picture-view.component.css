@@ -23,6 +23,14 @@ mat-icon {
   left: 0;
 }
 
+#delete {
+  margin: 10px;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+}
+
 mat-spinner {
   position: fixed;
 }

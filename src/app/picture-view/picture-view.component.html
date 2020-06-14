@@ -2,6 +2,10 @@
   <mat-icon>arrow_back</mat-icon>
 </a>
 
+<button *ngIf="my" id="delete" mat-icon-button (click)="delete()">
+  <mat-icon>delete</mat-icon>
+</button>
+
 <div id="shadow"></div>
 <img *ngIf="picture" [src]="picture.url" [alt]="picture.title" (load)="pictureLoad($event)">
 

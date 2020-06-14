@@ -40,6 +40,7 @@ import { SquareDirective } from './square.directive';
 import { HighlightDirective } from './highlight.directive';
 import { FillParentDirective } from './fill-parent.directive';
 import { PictureViewComponent } from './picture-view/picture-view.component';
+import { PictureDeleteComponent } from './picture-view/picture-delete/picture-delete.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { PictureViewComponent } from './picture-view/picture-view.component';
     HighlightDirective,
     FillParentDirective,
     PictureViewComponent,
+    PictureDeleteComponent,
   ],
   imports: [
     BrowserModule,
