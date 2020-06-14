@@ -2,6 +2,7 @@
   <mat-icon>arrow_back</mat-icon>
 </a>
 
-<img *ngIf="picture" [src]="picture.url" [alt]="picture.title">
+<div id="shadow"></div>
+<img *ngIf="picture" [src]="picture.url" [alt]="picture.title" (load)="pictureLoad($event)">
 
 <mat-spinner *ngIf="!picture" mode="indeterminate"></mat-spinner>

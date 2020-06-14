@@ -22,6 +22,18 @@ mat-icon {
   left: 0;
 }
 
+mat-spinner {
+  position: fixed;
+}
+
 img {
+  image-orientation: from-image;
+}
+
+#shadow {
+  pointer-events: none;
+  position: fixed;
   width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.26), transparent 56px, transparent);
 }

@@ -29,4 +29,21 @@ export class PictureViewComponent implements OnInit {
     this.browserService.picturesLoaded.subscribe(this.refresh.bind(this));
   }
 
+  pictureLoad(event: Event): void {
+    const element = event.target as HTMLImageElement;
+    const fitPicture = () => {
+      const orientation: 'horizontal' | 'vertical' = window.innerHeight < window.innerWidth ? 'horizontal' : 'vertical';
+
+      if (orientation === 'horizontal') {
+        element.style.height = '100%';
+        element.style.width = null;
+      } else {
+        element.style.width = '100%';
+        element.style.height = null;
+      }
+    };
+
+    fitPicture();
+    window.addEventListener('resize', fitPicture);
+  }
 }
