@@ -12,9 +12,5 @@ export class BrowserComponent implements OnInit {
 
   constructor(public browserService: BrowserService) { }
 
-  async ngOnInit(): Promise<void> {
-    if (this.browserService.filteredPictures === undefined) {
-      await this.browserService.refreshPictures();
-    }
-  }
+  ngOnInit(): void { }
 }

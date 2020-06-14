@@ -4,7 +4,7 @@
       <a routerLink="" (click)="homePressed.emit()">Amazing Pictures</a>
     </div>
     <div id="search">
-      <app-search-box></app-search-box>
+      <app-search-box [homePressed]="homePressed"></app-search-box>
     </div>
     <div class="align-right">
       <button *ngIf="accountService.user" mat-icon-button id="upload-picture" (click)="selectPicture()">

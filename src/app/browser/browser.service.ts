@@ -8,10 +8,11 @@ import { SearchService } from '../search.service';
 })
 export class BrowserService {
   loading = false;
-  private pictures: Picture[];
-  filteredPictures: Picture[];
+  private pictures: Picture[] = [];
+  filteredPictures: Picture[] = [];
 
   constructor(private picturesService: PicturesService, private searchService: SearchService) {
+    this.refreshPictures().catch(console.error);
     searchService.searchPhrase
       .subscribe(phrase => this.filteredPictures = this.pictures.filter(picture => phrase ?
         picture.title.toUpperCase().includes(phrase.toUpperCase())

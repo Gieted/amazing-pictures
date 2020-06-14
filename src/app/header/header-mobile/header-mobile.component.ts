@@ -4,6 +4,7 @@ import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
 import { PictureUploadService } from '../../picture-upload/picture-upload.service';
 import { SearchService } from '../../search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-mobile',
@@ -29,10 +30,13 @@ export class HeaderMobileComponent implements OnInit {
   constructor(public accountService: AccountService,
               public progressBar: ProgressBar,
               private uploadService: PictureUploadService,
-              private searchService: SearchService) { }
+              private searchService: SearchService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(() => this.onInput());
+    this.router.events.subscribe(this.clear.bind(this));
+    this.homePressed.subscribe(this.clear.bind(this));
   }
 
   onFocusIn(): void {

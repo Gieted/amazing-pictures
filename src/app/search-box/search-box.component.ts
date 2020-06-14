@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SearchService } from '../search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -12,12 +13,16 @@ export class SearchBoxComponent implements OnInit {
   displayClear: boolean;
   readonly search = new FormControl();
 
+  @Input() homePressed: EventEmitter<void>;
+
   @ViewChild('input') readonly input: ElementRef<HTMLInputElement>;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private router: Router) { }
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(() => this.onInput());
+    this.router.events.subscribe(this.clear.bind(this));
+    this.homePressed.subscribe(this.clear.bind(this));
   }
 
   onFocusIn(): void {
