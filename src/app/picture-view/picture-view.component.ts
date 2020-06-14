@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BrowserService } from '../browser/browser.service';
 import Picture from '../pictures/Picture';
 import { AccountService } from '../account.service';
@@ -19,7 +19,8 @@ export class PictureViewComponent implements OnInit {
   constructor(route: ActivatedRoute,
               private browserService: BrowserService,
               private accountService: AccountService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private router: Router) {
 
     route.params.subscribe(async params => {
       this.id = params.id;
@@ -40,13 +41,18 @@ export class PictureViewComponent implements OnInit {
     this.browserService.picturesLoaded.subscribe(this.refresh.bind(this));
   }
 
-
-
   delete(): void {
     this.dialog.open(PictureDeleteComponent, {
       autoFocus: false,
       restoreFocus: false,
       data: { id: this.id }
     });
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event): void {
+    if (event.key === 'Escape') {
+      this.router.navigateByUrl('').catch(console.error);
+    }
   }
 }

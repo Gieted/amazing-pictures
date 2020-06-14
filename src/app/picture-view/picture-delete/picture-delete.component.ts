@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BrowserService } from '../../browser/browser.service';
@@ -10,6 +10,9 @@ import { PictureDeleteService } from './picture-delete.service';
   styleUrls: ['./picture-delete.component.css']
 })
 export class PictureDeleteComponent implements OnInit {
+  @ViewChild('deleteButton', { read: ElementRef }) readonly deleteButton: ElementRef<HTMLButtonElement>;
+
+
   id: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any,
@@ -23,6 +26,11 @@ export class PictureDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dialogRef.keydownEvents().subscribe(event => {
+      if (event.key === 'Enter') {
+        this.deleteButton.nativeElement.click();
+      }
+    });
   }
 
   cancel() {
