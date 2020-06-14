@@ -1,7 +1,7 @@
 <div *ngIf="!browserService.loading" id="content">
   <div *ngFor="let picture of browserService.filteredPictures" appSquare id="image-box">
     <div appHighlight id="image-shadow" [className]="touchScreen ? 'touchScreen' : ''"></div>
-    <img appFillParent [alt]="picture.timestamp" [src]="picture.url">
+    <img appFillParent [alt]="picture.title" [src]="picture.url">
   </div>
 </div>
 <div *ngIf="browserService.loading" id="spinner-wrapper">
