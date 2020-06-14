@@ -8,6 +8,8 @@ import { BrowserService } from './browser.service';
 })
 export class BrowserComponent implements OnInit {
 
+  touchScreen = ('ontouchstart' in window);
+
   constructor(public browserService: BrowserService) { }
 
   async ngOnInit(): Promise<void> {

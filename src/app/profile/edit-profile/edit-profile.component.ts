@@ -22,6 +22,8 @@ export class EditProfileComponent implements OnInit {
     picture: new FormControl(),
   });
 
+  touchScreen = ('ontouchstart' in window);
+
   uploadTask?: AngularFireUploadTask;
   uploadPercent?: Observable<number | null>;
 

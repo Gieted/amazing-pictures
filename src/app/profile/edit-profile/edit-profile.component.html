@@ -3,7 +3,7 @@
   <div *ngIf="mode === 'complete'">Please complete your profile to continue:</div>
   <form id="profile-form" [formGroup]="profile" (ngSubmit)="updateProfile()">
     <div id="picture-upload-section">
-      <button *ngIf="!uploadTask" mat-icon-button class="upload-photo" (click)="selectPicture()" type="button">
+      <button *ngIf="!uploadTask" mat-icon-button [class]="'upload-photo' + (touchScreen ? ' touchScreen' : '')" (click)="selectPicture()" type="button">
         <img id="profile-picture" *ngIf="accountService.user?.photoURL" [src]="accountService.user.photoURL"
              alt="Profile picture">
         <span id="icon-wrapper">

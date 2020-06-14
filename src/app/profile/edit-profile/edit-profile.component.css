@@ -59,25 +59,13 @@ mat-form-field {
   justify-content: center;
 }
 
-@media (pointer: fine) {
-  button.upload-photo:not(:hover) .hidden {
-    visibility: hidden;
-  }
+
+button.upload-photo:not(:hover):not(.touchScreen) .hidden {
+  visibility: hidden;
 }
 
-@media (pointer: none) {
-  button #upload-background {
-    opacity: .7;
-    background: #fff;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-}
-
-button:hover #upload-background {
+button:hover #upload-background,
+button.touchScreen #upload-background {
   opacity: .7;
   background: #fff;
   height: 100%;
