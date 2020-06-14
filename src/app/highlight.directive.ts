@@ -11,8 +11,8 @@ export class HighlightDirective implements OnInit {
   }
 
   ngOnInit(): void {
-    this.element.addEventListener('mouseenter', () => this.element.style.borderWidth = '6px');
-    this.element.addEventListener('mouseleave', () => this.element.style.borderWidth = null);
+    this.element.addEventListener('mouseenter', () => this.element.style.outlineWidth = '6px');
+    this.element.addEventListener('mouseleave', () => this.element.style.outlineWidth = null);
   }
 
 }
