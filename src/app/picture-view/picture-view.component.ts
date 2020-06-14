@@ -31,7 +31,9 @@ export class PictureViewComponent implements OnInit {
 
   refresh(): void {
     this.picture = this.browserService.pictures.find(picture => picture.id === this.id);
-    this.my = this.picture.authorId === this.accountService.user.uid;
+    if (this.picture) {
+      this.my = this.picture.authorId === this.accountService.user.uid;
+    }
   }
 
   ngOnInit(): void {
