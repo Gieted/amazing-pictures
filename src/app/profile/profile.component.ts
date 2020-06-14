@@ -8,7 +8,6 @@ import { AccountService } from '../account.service';
 import { User } from 'firebase';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
-import { UpdateService } from '../update.service';
 
 @Component({
   selector: 'app-profile',
@@ -27,8 +26,7 @@ export class ProfileComponent implements OnInit {
               public profileService: ProfileService,
               private storage: AngularFireStorage,
               private accountService: AccountService,
-              private dialog: MatDialog,
-              private updateService: UpdateService) {
+              private dialog: MatDialog) {
 
     accountService.onSignIn.subscribe(this.detectMe.bind(this));
     accountService.onSingOut.subscribe(this.detectMe.bind(this));
@@ -53,9 +51,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.updateService.checkForUpdate().catch(console.error);
-  }
+  ngOnInit(): void { }
 
   edit(): void {
     this.profileService.openDialog(null, 'edit', this.profile.displayName);
