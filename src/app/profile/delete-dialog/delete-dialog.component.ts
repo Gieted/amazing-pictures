@@ -6,6 +6,8 @@ import { AccountService } from '../../account.service';
 import { auth } from 'firebase/app';
 import { ProgressBar } from '../../progress-bar.service';
 import { Router } from '@angular/router';
+import { PictureDeleteService } from '../../picture-view/picture-delete/picture-delete.service';
+import { BrowserService } from '../../browser/browser.service';
 
 @Component({
   selector: 'app-delete-dialog',
@@ -27,7 +29,9 @@ export class DeleteDialogComponent implements OnInit {
               private accountService: AccountService,
               private dialog: MatDialog,
               private progressBar: ProgressBar,
-              private router: Router) {
+              private router: Router,
+              private pictureDeleteService: PictureDeleteService,
+              private browserService: BrowserService) {
 
     this.id = data.id;
     this.errorMessage = data.errorMessage;
@@ -67,13 +71,18 @@ export class DeleteDialogComponent implements OnInit {
         }
 
         this.open(errorMessage);
+        this.progressBar.show = false;
 
         return;
-      } finally {
-        this.progressBar.show = false;
       }
 
+      const profile = await this.profileService.getProfile(this.id);
+      for (const picture of profile.pictures) {
+        await this.pictureDeleteService.deletePicture(picture.id);
+      }
       await this.profileService.deleteProfile(this.id);
+      await this.browserService.refreshPictures();
+      this.progressBar.show = false;
       await this.router.navigate(['']);
     }
   }

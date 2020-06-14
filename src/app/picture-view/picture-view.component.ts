@@ -32,7 +32,7 @@ export class PictureViewComponent implements OnInit {
   refresh(): void {
     this.picture = this.browserService.pictures.find(picture => picture.id === this.id);
     if (this.picture) {
-      this.my = this.picture.authorId === this.accountService.user.uid;
+      this.my = this.picture.authorId === this.accountService.user?.uid;
     }
   }
 
