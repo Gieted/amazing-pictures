@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
 import { PictureUploadService } from '../../picture-upload/picture-upload.service';
+import { SearchService } from '../../search.service';
 
 @Component({
   selector: 'app-header-mobile',
@@ -25,7 +26,10 @@ export class HeaderMobileComponent implements OnInit {
 
   @Output() homePressed: EventEmitter<void> = new EventEmitter();
 
-  constructor(public accountService: AccountService, public progressBar: ProgressBar, private uploadService: PictureUploadService) { }
+  constructor(public accountService: AccountService,
+              public progressBar: ProgressBar,
+              private uploadService: PictureUploadService,
+              private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(() => this.onInput());
@@ -45,6 +49,8 @@ export class HeaderMobileComponent implements OnInit {
 
   onInput(): void {
     this.displayClear = this.search.value;
+
+    this.searchService.setSearchPhrase(this.search.value);
   }
 
   clear(): void {

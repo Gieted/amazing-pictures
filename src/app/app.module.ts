@@ -39,6 +39,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SquareDirective } from './square.directive';
 import { HighlightDirective } from './highlight.directive';
 import { FillParentDirective } from './fill-parent.directive';
+import { GrowOnClickDirective } from './grow-on-click.directive';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { FillParentDirective } from './fill-parent.directive';
     SquareDirective,
     HighlightDirective,
     FillParentDirective,
+    GrowOnClickDirective,
   ],
   imports: [
     BrowserModule,

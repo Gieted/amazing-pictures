@@ -1,19 +1,16 @@
-import { AfterViewChecked, Directive, ElementRef, OnInit } from '@angular/core';
+import { Directive, ElementRef, OnInit } from '@angular/core';
+import { ResizeObserver } from '@juggle/resize-observer';
 
 @Directive({
   selector: '[appSquare]'
 })
-export class SquareDirective implements OnInit, AfterViewChecked {
+export class SquareDirective implements OnInit {
 
   constructor(private element: ElementRef) { }
 
   ngOnInit(): void {
-    this.element.nativeElement.getElementsByTagName('img')[0].addEventListener('load', this.setHeight.bind(this));
-    this.element.nativeElement.addEventListener('resize', this.setHeight.bind(this));
-  }
-
-  ngAfterViewChecked(): void {
-    this.setHeight();
+    const ro = new ResizeObserver(this.setHeight.bind(this));
+    ro.observe(this.element.nativeElement);
   }
 
   setHeight() {

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-search-box',
@@ -13,7 +14,7 @@ export class SearchBoxComponent implements OnInit {
 
   @ViewChild('input') readonly input: ElementRef<HTMLInputElement>;
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(() => this.onInput());
@@ -33,6 +34,8 @@ export class SearchBoxComponent implements OnInit {
 
   onInput(): void {
     this.displayClear = this.search.value;
+
+    this.searchService.setSearchPhrase(this.search.value);
   }
 
   clear(): void {
