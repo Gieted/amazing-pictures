@@ -60,7 +60,8 @@ mat-form-field {
 }
 
 
-button.upload-photo:not(:hover):not(.touchScreen) .hidden {
+button.upload-photo:not(:hover) .hidden,
+button.upload-photo.touchScreen .hidden {
   visibility: hidden;
 }
 
