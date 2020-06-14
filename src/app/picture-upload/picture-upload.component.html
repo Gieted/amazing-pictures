@@ -23,13 +23,21 @@
           {{ tag }}
           <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
-        <input size="1"
-               aria-label="Tags"
-               [matChipInputFor]="tagsList"
-               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-               matChipInputAddOnBlur
-               (matChipInputTokenEnd)="addTag($event)">
+        <input
+          #tagInput
+          size="1"
+          aria-label="Tags"
+          (input)="onTagInput()"
+          [matAutocomplete]="autocomplete"
+          [matChipInputFor]="tagsList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="addTag($event)">
       </mat-chip-list>
+      <mat-autocomplete #autocomplete (optionSelected)="selectedTag($event)">
+        <mat-option *ngFor="let tag of filteredRecentTags" [value]="tag">
+          {{ tag }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </form>
 </mat-dialog-content>

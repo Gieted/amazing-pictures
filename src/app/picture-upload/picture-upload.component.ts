@@ -18,6 +18,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ProfileService } from '../profile/profile.service';
 import Profile from '../profile/Profile';
 import { BrowserService } from '../browser/browser.service';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-picture-upload',
@@ -25,6 +26,7 @@ import { BrowserService } from '../browser/browser.service';
   styleUrls: ['./picture-upload.component.css']
 })
 export class PictureUploadComponent implements OnInit {
+  @ViewChild('tagInput') readonly tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('postButton', { read: ElementRef }) readonly postButton: ElementRef<HTMLButtonElement>;
 
   readonly file;
@@ -43,6 +45,9 @@ export class PictureUploadComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   errorMessage?: string;
+
+  recentTags: string[];
+  filteredRecentTags: string[];
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any,
               public dialogRef: MatDialogRef<PictureUploadComponent>,
@@ -65,7 +70,7 @@ export class PictureUploadComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.preview();
     this.onResize();
 
@@ -74,11 +79,13 @@ export class PictureUploadComponent implements OnInit {
         this.postButton.nativeElement.click();
       }
     });
+
+    await this.fetchRecentTags();
   }
 
   @HostListener('window:resize')
   onResize(): void {
-    this.orientation = window.innerWidth > window.innerHeight  && window.innerHeight > 700 ? 'horizontal' : 'vertical';
+    this.orientation = window.innerWidth > window.innerHeight && window.innerHeight > 700 ? 'horizontal' : 'vertical';
     window.document.activeElement.scrollIntoView();
   }
 
@@ -99,6 +106,8 @@ export class PictureUploadComponent implements OnInit {
     if (input) {
       input.value = '';
     }
+
+    this.filterRecentTags();
   }
 
   removeTag(tag: string): void {
@@ -107,6 +116,8 @@ export class PictureUploadComponent implements OnInit {
     if (index >= 0) {
       this.tags.splice(index, 1);
     }
+
+    this.filterRecentTags();
   }
 
   async post() {
@@ -124,7 +135,13 @@ export class PictureUploadComponent implements OnInit {
           }
         });
         const pictureDoc = this.firestore.collection('pictures').doc(pictureId);
-        await pictureDoc.set({ title: this.titleForm.value, tags: this.tags, owner: userId, timestamp: +new Date() });
+        const tags = [];
+        this.tags.forEach(tag => {
+          if (!tags.includes(tag)) {
+            tags.push(tag);
+          }
+        });
+        await pictureDoc.set({ title: this.titleForm.value, tags, owner: userId, timestamp: +new Date() });
         const profile: Profile = await this.profileService.getProfile(userId);
         this.tags.forEach(tag => {
             if (!profile.recentTags.includes(tag)) {
@@ -161,5 +178,28 @@ export class PictureUploadComponent implements OnInit {
       width: '1000px',
       data: { file: this.file, errorMessage, title: this.titleForm.value, tags: this.tags }
     });
+  }
+
+  async fetchRecentTags(): Promise<void> {
+    const userId = this.accountService.user.uid;
+    const profile: Profile = await this.profileService.getProfile(userId);
+    this.recentTags = profile.recentTags;
+    this.filterRecentTags();
+  }
+
+  selectedTag(event: MatAutocompleteSelectedEvent): void {
+    this.tags.push(event.option.viewValue);
+    this.tagInput.nativeElement.value = '';
+
+    this.filterRecentTags();
+  }
+
+  filterRecentTags(): void {
+    this.filteredRecentTags
+      = this.recentTags.filter(tag => !this.tags.includes(tag)).filter(tag => tag.includes(this.tagInput.nativeElement.value));
+  }
+
+  onTagInput(): void {
+    this.filterRecentTags();
   }
 }
