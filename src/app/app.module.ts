@@ -38,6 +38,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SquareDirective } from './square.directive';
 import { HighlightDirective } from './highlight.directive';
+import { FillParentDirective } from './fill-parent.directive';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { HighlightDirective } from './highlight.directive';
     PictureUploadComponent,
     SquareDirective,
     HighlightDirective,
+    FillParentDirective,
   ],
   imports: [
     BrowserModule,
