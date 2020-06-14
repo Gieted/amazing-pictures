@@ -32,7 +32,7 @@ mat-spinner {
 #image-box {
   flex: 1;
   min-width: 100px;
-  max-width: 400px;
+  max-width: 300px;
   height: 100px;
   overflow: hidden;
   margin-right: 3px;
@@ -52,4 +52,3 @@ mat-spinner {
 #image-shadow.touchScreen {
   visibility: hidden;
 }
-
