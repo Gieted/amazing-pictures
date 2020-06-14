@@ -1,1 +1,7 @@
-<p>picture-view works!</p>
+<a id="back-button" mat-icon-button routerLink="">
+  <mat-icon>arrow_back</mat-icon>
+</a>
+
+<img *ngIf="picture" [src]="picture.url" [alt]="picture.title">
+
+<mat-spinner *ngIf="!picture" mode="indeterminate"></mat-spinner>

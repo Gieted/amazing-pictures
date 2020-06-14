@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import Picture from '../pictures/Picture';
 import { PicturesService } from '../pictures/pictures.service';
 import { SearchService } from '../search.service';
@@ -8,8 +8,9 @@ import { SearchService } from '../search.service';
 })
 export class BrowserService {
   loading = false;
-  private pictures: Picture[] = [];
+  pictures: Picture[] = [];
   filteredPictures: Picture[] = [];
+  picturesLoaded: EventEmitter<void> = new EventEmitter();
 
   constructor(private picturesService: PicturesService, private searchService: SearchService) {
     this.refreshPictures().catch(console.error);
@@ -24,6 +25,7 @@ export class BrowserService {
     const pic = await this.picturesService.fetchPictures();
     this.pictures = pic.sort((picture1, picture2) => picture2.timestamp - picture1.timestamp);
     this.filteredPictures = this.pictures;
+    this.picturesLoaded.emit();
     this.loading = false;
   }
 }
