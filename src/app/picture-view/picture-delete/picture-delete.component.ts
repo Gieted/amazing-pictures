@@ -5,6 +5,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AccountService } from '../../account.service';
 import { ProfileService } from '../../profile/profile.service';
 import Profile from '../../profile/Profile';
+import { Router } from '@angular/router';
+import { BrowserService } from '../../browser/browser.service';
 
 @Component({
   selector: 'app-picture-delete',
@@ -20,7 +22,9 @@ export class PictureDeleteComponent implements OnInit {
               private storage: AngularFireStorage,
               private dialog: MatDialog,
               private profileService: ProfileService,
-              private accountService: AccountService) {
+              private accountService: AccountService,
+              private router: Router,
+              private browserService: BrowserService) {
 
     this.id = data.id;
   }
@@ -43,5 +47,8 @@ export class PictureDeleteComponent implements OnInit {
     } catch (e) {
       console.error(e);
     }
+
+    await this.router.navigateByUrl('');
+    await this.browserService.refreshPictures();
   }
 }
