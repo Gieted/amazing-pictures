@@ -7,11 +7,12 @@ import { interval, Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class UpdateService {
+  updateAvailable: boolean;
 
   constructor(private swUpdate: SwUpdate, private snackBar: MatSnackBar) { }
 
   async checkForUpdate() {
-    if (this.swUpdate.isEnabled) {
+    if (this.swUpdate.isEnabled && !this.updateAvailable) {
       console.log('Checking for update');
       await this.swUpdate.checkForUpdate();
     }
@@ -25,6 +26,7 @@ export class UpdateService {
     const updateAvailable = this.swUpdate.available.subscribe(() => {
       updateAvailable.unsubscribe();
       updateCheck.unsubscribe();
+      this.updateAvailable = true;
       console.log('New update available');
       const snack = this.snackBar.open('Update available', 'UPDATE NOW');
 
