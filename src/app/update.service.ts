@@ -18,7 +18,6 @@ export class UpdateService {
   async listenForUpdate(): Promise<void> {
     let updateCheck: Subscription;
     if (this.swUpdate.isEnabled) {
-      this.checkForUpdate().catch(console.error);
       updateCheck = interval(1000 * 60 * 30).subscribe(this.checkForUpdate.bind(this));
     }
     const updateAvailable = this.swUpdate.available.subscribe(() => {
