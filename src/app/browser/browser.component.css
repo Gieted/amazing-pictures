@@ -33,7 +33,7 @@ mat-spinner {
 #image-box {
   flex: 1;
   min-width: 100px;
-  max-width: 300px;
+  max-width: 250px;
   height: 100px;
   overflow: hidden;
   margin-right: 3px;
