@@ -65,7 +65,7 @@ mat-form-field {
   }
 }
 
-@media (pointer: coarse) {
+@media (pointer: none) {
   button #upload-background {
     opacity: .7;
     background: #fff;
