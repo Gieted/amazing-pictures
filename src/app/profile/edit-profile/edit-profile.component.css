@@ -64,8 +64,7 @@ button.upload-photo:not(:hover):not(.touchScreen) .hidden {
   visibility: hidden;
 }
 
-button:hover #upload-background,
-button.touchScreen #upload-background {
+button:hover:not(.touchScreen) #upload-background {
   opacity: .7;
   background: #fff;
   height: 100%;
