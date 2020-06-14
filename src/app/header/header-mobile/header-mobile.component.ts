@@ -13,7 +13,6 @@ import { NavigationStart, Router } from '@angular/router';
 })
 export class HeaderMobileComponent implements OnInit {
   readonly defaultProfilePictureUrl = 'assets/images/default-profile-picture.png';
-  active: boolean;
   displayClear: boolean;
   readonly search = new FormControl();
 
@@ -58,18 +57,6 @@ export class HeaderMobileComponent implements OnInit {
         this.clear();
       }
     });
-  }
-
-  onFocusIn(): void {
-    this.active = true;
-    if (this.search.value) {
-      this.displayClear = true;
-    }
-  }
-
-  onFocusOut(): void {
-    this.active = false;
-    this.displayClear = false;
   }
 
   onInput(): void {
