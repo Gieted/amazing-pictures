@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BrowserService } from '../browser/browser.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   mobile: boolean;
 
-  constructor() { }
+  constructor(private router: Router, private browserService: BrowserService) { }
 
   ngOnInit(): void {
     this.onResize();
@@ -17,5 +19,11 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:resize')
   onResize() {
     this.mobile = window.innerWidth < window.innerHeight;
+  }
+
+  async homePressed(): Promise<void> {
+    if (this.router.url === '/') {
+      await this.browserService.refreshPictures();
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
 import { PictureUploadService } from '../../picture-upload/picture-upload.service';
@@ -12,6 +12,8 @@ export class HeaderDesktopComponent implements OnInit {
   readonly defaultProfilePictureUrl = 'assets/images/default-profile-picture.png';
 
   @ViewChild('pictureInput') readonly pictureInput: ElementRef<HTMLInputElement>;
+
+  @Output() homePressed: EventEmitter<void> = new EventEmitter();
 
   constructor(public accountService: AccountService, public progressBar: ProgressBar, private uploadService: PictureUploadService) { }
 

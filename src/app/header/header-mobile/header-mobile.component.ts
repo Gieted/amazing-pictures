@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
@@ -22,6 +22,8 @@ export class HeaderMobileComponent implements OnInit {
   @ViewChild('input') readonly input: ElementRef<HTMLInputElement>;
 
   @ViewChild('pictureInput') readonly pictureInput: ElementRef<HTMLInputElement>;
+
+  @Output() homePressed: EventEmitter<void> = new EventEmitter();
 
   constructor(public accountService: AccountService, public progressBar: ProgressBar, private uploadService: PictureUploadService) { }
 
