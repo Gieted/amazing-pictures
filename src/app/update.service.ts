@@ -10,7 +10,7 @@ export class UpdateService {
 
   constructor(private swUpdate: SwUpdate, private snackBar: MatSnackBar) { }
 
-  private async checkForUpdate() {
+  async checkForUpdate() {
     console.log('Checking for update');
     await this.swUpdate.checkForUpdate();
   }
