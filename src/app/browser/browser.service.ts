@@ -14,7 +14,7 @@ export class BrowserService {
   async refreshPictures() {
     this.loading = true;
     const pic = await this.picturesService.fetchPictures();
-    this.pictures = pic.sort(picture => picture.timestamp);
+    this.pictures = pic.sort((picture1, picture2) => picture2.timestamp - picture1.timestamp);
     this.loading = false;
   }
 }

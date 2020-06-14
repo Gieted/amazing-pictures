@@ -37,6 +37,7 @@ import { PictureUploadComponent } from './picture-upload/picture-upload.componen
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SquareDirective } from './square.directive';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SquareDirective } from './square.directive';
     DeleteDialogComponent,
     PictureUploadComponent,
     SquareDirective,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
