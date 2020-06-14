@@ -11,8 +11,10 @@ export class UpdateService {
   constructor(private swUpdate: SwUpdate, private snackBar: MatSnackBar) { }
 
   async checkForUpdate() {
-    console.log('Checking for update');
-    await this.swUpdate.checkForUpdate();
+    if (this.swUpdate.isEnabled) {
+      console.log('Checking for update');
+      await this.swUpdate.checkForUpdate();
+    }
   }
 
   async listenForUpdate(): Promise<void> {
