@@ -18,6 +18,7 @@ mat-icon {
 #back-button {
   margin: 10px;
   position: fixed;
+  z-index: 10000;
   top: 0;
   left: 0;
 }
@@ -34,6 +35,7 @@ img {
   pointer-events: none;
   position: fixed;
   width: 100%;
-  height: 100%;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.26), transparent 56px, transparent);
+  height: 70px;
+  top: 0;
+  background-image: linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,0.4))
 }
