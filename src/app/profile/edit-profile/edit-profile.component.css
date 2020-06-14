@@ -59,13 +59,13 @@ mat-form-field {
   justify-content: center;
 }
 
-@media (hover: hover) {
+@media all and (hover: hover) {
   button.upload-photo:not(:hover) .hidden {
     visibility: hidden;
   }
 }
 
-@media (hover: none) {
+@media all and (hover: none) {
   button #upload-background {
     opacity: .7;
     background: #fff;
