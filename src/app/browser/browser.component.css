@@ -16,9 +16,6 @@ img {
   image-orientation: from-image;
   object-fit: cover;
   font-size: 0;
-  outline: #3f51b5 solid 0;
-  outline-offset: -6px;
-  cursor: pointer;
 }
 
 mat-spinner {
@@ -42,9 +39,12 @@ mat-spinner {
   margin-bottom: 3px;
   align-items: center;
   display: flex;
+  cursor: pointer;
 }
 
 #image-shadow {
+  height: inherit;
   position: absolute;
-  background-image: linear-gradient(to bottom,rgba(0,0,0,0.26),transparent 56px,transparent)
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0.26),transparent 56px,transparent);
+  opacity: 0;
 }
