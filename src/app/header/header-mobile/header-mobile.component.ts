@@ -2,7 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FormControl } from '@angular/forms';
 import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
-import { PicturesService } from '../../pictures/pictures.service';
+import { PictureUploadService } from '../../picture-upload/picture-upload.service';
 
 @Component({
   selector: 'app-header-mobile',
@@ -23,7 +23,7 @@ export class HeaderMobileComponent implements OnInit {
 
   @ViewChild('pictureInput') readonly pictureInput: ElementRef<HTMLInputElement>;
 
-  constructor(public accountService: AccountService, public progressBar: ProgressBar, private picturesService: PicturesService) { }
+  constructor(public accountService: AccountService, public progressBar: ProgressBar, private uploadService: PictureUploadService) { }
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(() => this.onInput());
@@ -82,7 +82,7 @@ export class HeaderMobileComponent implements OnInit {
 
   async uploadPicture(event): Promise<void> {
     const file = event.target.files[0];
-    await this.picturesService.uploadPicture(file);
+    await this.uploadService.uploadPicture(file);
   }
 
   selectPicture() {

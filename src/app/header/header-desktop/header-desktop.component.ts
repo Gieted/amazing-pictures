@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
-import { PicturesService } from '../../pictures/pictures.service';
+import { PictureUploadService } from '../../picture-upload/picture-upload.service';
 
 @Component({
   selector: 'app-header-desktop',
@@ -13,13 +13,13 @@ export class HeaderDesktopComponent implements OnInit {
 
   @ViewChild('pictureInput') readonly pictureInput: ElementRef<HTMLInputElement>;
 
-  constructor(public accountService: AccountService, public progressBar: ProgressBar, private picturesService: PicturesService) { }
+  constructor(public accountService: AccountService, public progressBar: ProgressBar, private uploadService: PictureUploadService) { }
 
   ngOnInit(): void {}
 
   async uploadPicture(event): Promise<void> {
     const file = event.target.files[0];
-    await this.picturesService.uploadPicture(file);
+    await this.uploadService.uploadPicture(file);
   }
 
   selectPicture() {

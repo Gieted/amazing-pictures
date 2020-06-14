@@ -124,7 +124,7 @@ export class PictureUploadComponent implements OnInit {
           }
         });
         const pictureDoc = this.firestore.collection('pictures').doc(pictureId);
-        await pictureDoc.set({ title: this.titleForm.value, tags: this.tags, owner: userId });
+        await pictureDoc.set({ title: this.titleForm.value, tags: this.tags, owner: userId, timestamp: +new Date() });
         const profile: Profile = await this.profileService.getProfile(userId);
         this.tags.forEach(tag => {
             if (!profile.recentTags.includes(tag)) {
@@ -149,7 +149,7 @@ export class PictureUploadComponent implements OnInit {
         this.progressBar.show = false;
       }
 
-      this.browserService.refresh.emit();
+      this.browserService.refreshPictures().catch(console.error);
     }
   }
 

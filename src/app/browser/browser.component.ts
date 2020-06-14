@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PicturesService } from '../pictures/pictures.service';
-import Picture from '../pictures/Picture';
 import { BrowserService } from './browser.service';
 
 @Component({
@@ -9,19 +7,12 @@ import { BrowserService } from './browser.service';
   styleUrls: ['./browser.component.css']
 })
 export class BrowserComponent implements OnInit {
-  pictures: Picture[];
-  loading = false;
 
-  constructor(private picturesService: PicturesService, private browserService: BrowserService) { }
+  constructor(public browserService: BrowserService) { }
 
   async ngOnInit(): Promise<void> {
-    await this.refreshPictures();
-    this.browserService.refresh.subscribe(this.refreshPictures.bind(this));
-  }
-
-  async refreshPictures() {
-    this.loading = true;
-    this.pictures = await this.picturesService.fetchPictures();
-    this.loading = false;
+    if (this.browserService.pictures === undefined) {
+      await this.browserService.refreshPictures();
+    }
   }
 }
