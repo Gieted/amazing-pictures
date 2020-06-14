@@ -1,5 +1,8 @@
 <div *ngIf="!browserService.loading" id="content">
-  <img *ngFor="let picture of browserService.pictures" appSquare appHighlight [alt]="picture.timestamp" [src]="picture.url">
+  <div *ngFor="let picture of browserService.pictures" appSquare id="image-box">
+    <img appHighlight [alt]="picture.timestamp" [src]="picture.url">
+    <div id="image-shadow"></div>
+  </div>
 </div>
 <div id="spinner-wrapper">
   <mat-spinner *ngIf="browserService.loading" mode="indeterminate"></mat-spinner>

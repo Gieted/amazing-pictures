@@ -8,7 +8,7 @@ export class SquareDirective implements OnInit, AfterViewChecked {
   constructor(private element: ElementRef) { }
 
   ngOnInit(): void {
-    this.element.nativeElement.addEventListener('load', this.setHeight.bind(this));
+    this.element.nativeElement.firstChild.addEventListener('load', this.setHeight.bind(this));
     this.element.nativeElement.addEventListener('resize', this.setHeight.bind(this));
   }
 
@@ -17,6 +17,6 @@ export class SquareDirective implements OnInit, AfterViewChecked {
   }
 
   setHeight() {
-    this.element.nativeElement.style.height = this.element.nativeElement.width + 'px';
+    this.element.nativeElement.style.height = this.element.nativeElement.offsetWidth + 'px';
   }
 }
