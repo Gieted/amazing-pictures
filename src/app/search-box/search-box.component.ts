@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SearchService } from '../search.service';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -12,6 +12,7 @@ export class SearchBoxComponent implements OnInit {
   active: boolean;
   displayClear: boolean;
   readonly search = new FormControl();
+  pictureView: boolean;
 
   @Input() homePressed: EventEmitter<void>;
 
@@ -21,8 +22,27 @@ export class SearchBoxComponent implements OnInit {
 
   ngOnInit(): void {
     this.search.valueChanges.subscribe(() => this.onInput());
-    this.router.events.subscribe(this.clear.bind(this));
-    this.homePressed.subscribe(this.clear.bind(this));
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        if (this.pictureView) {
+          this.pictureView = false;
+        } else if (event.url.includes('picture')) {
+          this.pictureView = true;
+        } else {
+          this.clear();
+        }
+      }
+    });
+    this.homePressed.subscribe(() => {
+      if (this.router.url !== '/') {
+        return;
+      }
+      if (this.pictureView) {
+        this.pictureView = false;
+      } else {
+        this.clear();
+      }
+    });
   }
 
   onFocusIn(): void {

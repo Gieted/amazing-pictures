@@ -4,4 +4,5 @@ export default interface Picture {
   tags: string[];
   title: string;
   timestamp: number;
+  id: string;
 }

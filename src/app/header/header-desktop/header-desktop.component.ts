@@ -24,7 +24,7 @@ export class HeaderDesktopComponent implements OnInit {
     await this.uploadService.uploadPicture(file);
   }
 
-  selectPicture() {
+  selectPicture(): void {
     this.pictureInput.nativeElement.click();
   }
 }

@@ -17,7 +17,7 @@ export class PicturesService {
       const data = await doc.data();
       const file: AngularFireStorageReference = this.storage.ref(`pictures/${doc.id}`);
       const url = await file.getDownloadURL().toPromise();
-      return { url, title: data.title, tags: data.tags, authorId: data.owner, timestamp: data.timestamp } as Picture;
+      return { url, title: data.title, tags: data.tags, authorId: data.owner, timestamp: data.timestamp, id: doc.id } as Picture;
     });
 
     return Promise.all(pictures);
