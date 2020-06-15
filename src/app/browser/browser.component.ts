@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserService } from './browser.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-browser',
@@ -8,9 +9,15 @@ import { BrowserService } from './browser.service';
 })
 export class BrowserComponent implements OnInit {
 
+  pictureId: string;
+
   touchScreen = ('ontouchstart' in window);
 
-  constructor(public browserService: BrowserService) { }
+  constructor(public browserService: BrowserService, route: ActivatedRoute) {
+    route.params.subscribe(params => {
+      this.pictureId = params.pictureId;
+    });
+  }
 
   ngOnInit(): void { }
 }

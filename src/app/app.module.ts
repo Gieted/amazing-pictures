@@ -39,8 +39,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SquareDirective } from './square.directive';
 import { HighlightDirective } from './highlight.directive';
 import { FillParentDirective } from './fill-parent.directive';
-import { PictureViewComponent } from './picture-view/picture-view.component';
-import { PictureDeleteComponent } from './picture-view/picture-delete/picture-delete.component';
+import { PictureViewComponent } from './browser/picture-view/picture-view.component';
+import { PictureDeleteComponent } from './browser/picture-view/picture-delete/picture-delete.component';
 
 @NgModule({
   declarations: [

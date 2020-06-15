@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
     accountService.onSingOut.subscribe(this.detectMe.bind(this));
     profileService.profileEdit.subscribe(this.refresh.bind(this));
     route.params.subscribe(async params => {
-      this.id = params.id;
+      this.id = params.profileId;
       await this.refresh();
     });
   }

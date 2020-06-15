@@ -6,7 +6,7 @@ import { AccountService } from '../../account.service';
 import { auth } from 'firebase/app';
 import { ProgressBar } from '../../progress-bar.service';
 import { Router } from '@angular/router';
-import { PictureDeleteService } from '../../picture-view/picture-delete/picture-delete.service';
+import { PictureDeleteService } from '../../browser/picture-view/picture-delete/picture-delete.service';
 import { BrowserService } from '../../browser/browser.service';
 
 @Component({

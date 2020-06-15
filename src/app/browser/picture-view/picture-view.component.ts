@@ -1,12 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BrowserService } from '../browser/browser.service';
-import Picture from '../pictures/Picture';
-import { AccountService } from '../account.service';
+import { BrowserService } from '../browser.service';
+import Picture from '../../pictures/Picture';
+import { AccountService } from '../../account.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PictureDeleteComponent } from './picture-delete/picture-delete.component';
-import Profile from '../profile/Profile';
-import { ProfileService } from '../profile/profile.service';
+import Profile from '../../profile/Profile';
+import { ProfileService } from '../../profile/profile.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
@@ -32,7 +32,7 @@ export class PictureViewComponent implements OnInit {
               private storage: AngularFireStorage) {
 
     route.params.subscribe(async params => {
-      this.id = params.id;
+      this.id = params.pictureId;
       if (!browserService.loading) {
         await this.refresh();
       }

@@ -1,7 +1,7 @@
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { BrowserService } from '../../browser/browser.service';
+import { BrowserService } from '../../browser.service';
 import { PictureDeleteService } from './picture-delete.service';
 
 @Component({

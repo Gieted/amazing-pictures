@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import Profile from '../../profile/Profile';
+import Profile from '../../../profile/Profile';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { AccountService } from '../../account.service';
-import { ProfileService } from '../../profile/profile.service';
+import { AccountService } from '../../../account.service';
+import { ProfileService } from '../../../profile/profile.service';
 
 @Injectable({
   providedIn: 'root'
