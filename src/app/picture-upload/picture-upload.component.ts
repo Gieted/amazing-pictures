@@ -195,8 +195,9 @@ export class PictureUploadComponent implements OnInit {
   }
 
   filterRecentTags(): void {
-    this.filteredRecentTags
-      = this.recentTags.filter(tag => !this.tags.includes(tag)).filter(tag => tag.includes(this.tagInput.nativeElement.value));
+    this.filteredRecentTags = this.recentTags
+      .filter(tag => !this.tags.includes(tag))
+      .filter(tag => tag.toUpperCase().includes(this.tagInput.nativeElement.value.toUpperCase()));
   }
 
   onTagInput(): void {
