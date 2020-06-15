@@ -43,7 +43,9 @@ export class ProfileComponent implements OnInit {
     this.profile = await this.profileService.getProfile(this.id);
     this.detectMe(this.accountService.user);
     this.pictureUrl = this.storage.ref(`/users/${this.id}/profile-picture`).getDownloadURL();
-    await this.browserService.refreshPictures();
+    if (!this.me) {
+      await this.browserService.refreshPictures();
+    }
   }
 
   detectMe(user?: User): void {
