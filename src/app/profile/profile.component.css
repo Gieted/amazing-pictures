@@ -94,7 +94,7 @@ app-browser {
 }
 
 app-browser {
-  margin-top: 30px;
+  margin-top: 40px;
   width: calc(100% + 3px);
   display: block;
 }
