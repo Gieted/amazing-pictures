@@ -7,7 +7,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PictureDeleteComponent } from './picture-delete/picture-delete.component';
 import Profile from '../../profile/Profile';
 import { ProfileService } from '../../profile/profile.service';
-import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-picture-view',
@@ -28,8 +27,7 @@ export class PictureViewComponent implements OnInit {
               private accountService: AccountService,
               private dialog: MatDialog,
               private router: Router,
-              private profileService: ProfileService,
-              private storage: AngularFireStorage) {
+              private profileService: ProfileService) {
 
     route.params.subscribe(async params => {
       this.id = params.pictureId;
@@ -44,8 +42,7 @@ export class PictureViewComponent implements OnInit {
     if (this.picture) {
       this.my = this.picture.authorId === this.accountService.user?.uid;
       this.profile = await this.profileService.getProfile(this.picture.authorId);
-      this.profilePicUrl = await this.storage.ref('users').child(this.picture.authorId).child('profile-picture')
-        .getDownloadURL().toPromise();
+      this.profilePicUrl = this.profile.profilePictureUrl;
     }
   }
 

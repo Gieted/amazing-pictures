@@ -4,4 +4,5 @@ export default interface Profile {
   displayName: string;
   recentTags: string[];
   pictures: DocumentReference[];
+  profilePictureUrl?: string;
 }

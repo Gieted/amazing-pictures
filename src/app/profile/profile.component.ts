@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from './profile.service';
 import Profile from './Profile';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
 import { AccountService } from '../account.service';
 import { User } from 'firebase';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,7 +19,7 @@ export class ProfileComponent implements OnInit {
 
   private id: string;
   profile: Profile;
-  pictureUrl: Observable<string>;
+  pictureUrl: string;
   me: boolean;
 
   constructor(private route: ActivatedRoute,
@@ -42,7 +41,7 @@ export class ProfileComponent implements OnInit {
   async refresh(): Promise<void> {
     this.profile = await this.profileService.getProfile(this.id);
     this.detectMe(this.accountService.user);
-    this.pictureUrl = this.storage.ref(`/users/${this.id}/profile-picture`).getDownloadURL();
+    this.pictureUrl = this.profile.profilePictureUrl;
     if (!this.me) {
       await this.browserService.refreshPictures();
     }
