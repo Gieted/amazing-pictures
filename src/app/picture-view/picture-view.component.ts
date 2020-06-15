@@ -43,9 +43,10 @@ export class PictureViewComponent implements OnInit {
     this.picture = this.browserService.pictures.find(picture => picture.id === this.id);
     if (this.picture) {
       this.my = this.picture.authorId === this.accountService.user?.uid;
+      this.profile = await this.profileService.getProfile(this.picture.authorId);
+      this.profilePicUrl = await this.storage.ref('users').child(this.picture.authorId).child('profile-picture')
+        .getDownloadURL().toPromise();
     }
-    this.profile = await this.profileService.getProfile(this.picture.authorId);
-    this.profilePicUrl = await this.storage.ref('users').child(this.picture.authorId).child('profile-picture').getDownloadURL().toPromise();
   }
 
   ngOnInit(): void {
