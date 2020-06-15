@@ -1,6 +1,5 @@
 :host {
   margin-right: -3px;
-  height: 100%;
 }
 
 #content {
@@ -52,12 +51,4 @@ mat-spinner {
 
 #image-shadow.touchScreen {
   visibility: hidden;
-}
-
-#content-wrapper {
-  height: 100%;
-}
-
-#content-wrapper.disable-scroll {
-  overflow: hidden;
 }

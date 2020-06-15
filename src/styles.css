@@ -8,6 +8,10 @@ html {
   overflow-x: hidden;
 }
 
+html.hide-scroll {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
