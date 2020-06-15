@@ -7,7 +7,6 @@ import { AccountService } from '../account.service';
 import { User } from 'firebase';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
-import { BrowserService } from '../browser/browser.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,19 +20,20 @@ export class ProfileComponent implements OnInit {
   profile: Profile;
   pictureUrl: string;
   me: boolean;
+  imageView: boolean;
 
   constructor(private route: ActivatedRoute,
               public profileService: ProfileService,
               private storage: AngularFireStorage,
               private accountService: AccountService,
-              private dialog: MatDialog,
-              private browserService: BrowserService) {
+              private dialog: MatDialog) {
 
     accountService.onSignIn.subscribe(this.detectMe.bind(this));
     accountService.onSingOut.subscribe(this.detectMe.bind(this));
     profileService.profileEdit.subscribe(this.refresh.bind(this));
     route.params.subscribe(async params => {
       this.id = params.profileId;
+      this.imageView = params.pictureId;
       await this.refresh();
     });
   }
@@ -42,9 +42,6 @@ export class ProfileComponent implements OnInit {
     this.profile = await this.profileService.getProfile(this.id);
     this.detectMe(this.accountService.user);
     this.pictureUrl = this.profile.profilePictureUrl;
-    if (!this.me) {
-      await this.browserService.refreshPictures();
-    }
   }
 
   detectMe(user?: User): void {

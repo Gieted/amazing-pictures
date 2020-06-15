@@ -59,9 +59,14 @@ export class PictureViewComponent implements OnInit {
   }
 
   @HostListener('window:keydown', ['$event'])
-  onKeyDown(event): void {
+  async onKeyDown(event): Promise<void> {
     if (event.key === 'Escape') {
-      this.router.navigateByUrl('').catch(console.error);
+      await this.goBack();
     }
+  }
+
+  async goBack(): Promise<void> {
+    const url = this.router.url;
+    await this.router.navigateByUrl(/(.*)\/picture/.exec(url)[1]);
   }
 }

@@ -1,6 +1,6 @@
-<a id="back-button" mat-icon-button routerLink="">
+<button id="back-button" mat-icon-button (click)="goBack()">
   <mat-icon>arrow_back</mat-icon>
-</a>
+</button>
 
 <button *ngIf="my" id="delete" mat-icon-button (click)="delete()">
   <mat-icon>delete</mat-icon>
