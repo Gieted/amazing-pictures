@@ -20,6 +20,7 @@ img {
 }
 
 mat-spinner {
+  margin-top: 20px;
   position: absolute;
 }
 
