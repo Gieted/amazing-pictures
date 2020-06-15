@@ -92,3 +92,7 @@ app-browser {
 #delete {
   color: red;
 }
+
+app-browser {
+  width: 100%;
+}

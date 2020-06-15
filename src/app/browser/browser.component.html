@@ -1,6 +1,6 @@
 <div *ngIf="!browserService.loading" id="content">
   <div *ngFor="let picture of browserService.filteredPictures" appSquare id="image-box"
-       [routerLink]="'picture/' + picture.id">
+       [routerLink]="'/picture/' + picture.id">
     <div appHighlight id="image-shadow" [className]="touchScreen ? 'touchScreen' : ''"></div>
     <img appFillParent [alt]="picture.title" [src]="picture.url">
   </div>
