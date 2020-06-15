@@ -23,7 +23,7 @@ mat-card {
 }
 
 mat-card mat-icon {
-  opacity: 70%;
+  opacity: .7;
 }
 
 #clear {
