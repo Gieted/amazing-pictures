@@ -13,6 +13,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class ProfileService {
 
+  private readonly profileCache: Map<string, Profile> = new Map();
+
   profileEdit = new EventEmitter();
 
   constructor(private accountService: AccountService,
@@ -68,11 +70,17 @@ export class ProfileService {
   }
 
   async getProfile(id: string): Promise<Profile | null> {
+    if (this.profileCache.get(id)) {
+      return this.profileCache.get(id);
+    }
+
     const profileDoc = await this.firestore.collection('profiles').doc(id).ref.get();
     const profileData = profileDoc.data();
     if (!profileData) {
       return null;
     }
+
+    this.profileCache.set(id, profileData as Profile);
     return profileData as Profile;
   }
 
