@@ -6,7 +6,16 @@
   <mat-icon>delete</mat-icon>
 </button>
 
-<div id="shadow"></div>
+<div id="info" *ngIf="picture">
+  <div id="title">{{ picture.title }}</div>
+  <div *ngIf="profile" id="profile" [routerLink]="'/profile/' + picture.authorId">
+    <img id="profile-picture" [src]="profilePicUrl || defaultProfilePictureUrl" alt="Picture author profile picture">
+    <span id="profile-name">{{ profile.displayName }}</span>
+  </div>
+</div>
+
+<div id="shadow-up"></div>
+<div id="shadow-down"></div>
 <img *ngIf="picture" [src]="picture.url" [alt]="picture.title">
 
 <mat-spinner *ngIf="!picture" mode="indeterminate"></mat-spinner>
