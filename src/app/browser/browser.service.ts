@@ -27,7 +27,8 @@ export class BrowserService {
     this.pictures = pic.sort((picture1, picture2) => picture2.timestamp - picture1.timestamp);
     this.filteredPictures = this.pictures;
     this.picturesLoaded.emit();
-    this.pictures.forEach(picture => this.profileService.getProfile(picture.authorId));
     this.loading = false;
+    this.profileService.clearCache();
+    this.pictures.forEach(picture => this.profileService.getProfile(picture.authorId));
   }
 }

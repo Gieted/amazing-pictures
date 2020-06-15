@@ -89,4 +89,8 @@ export class ProfileService {
     await this.firestore.collection(`profiles`).doc(id).delete();
     await this.accountService.user.delete();
   }
+
+  clearCache(): void {
+    this.profileCache.clear();
+  }
 }
