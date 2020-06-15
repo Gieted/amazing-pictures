@@ -183,7 +183,7 @@ export class PictureUploadComponent implements OnInit {
   async fetchRecentTags(): Promise<void> {
     const userId = this.accountService.user.uid;
     const profile: Profile = await this.profileService.getProfile(userId);
-    this.recentTags = profile.recentTags;
+    this.recentTags = profile.recentTags.reverse();
     this.filterRecentTags();
   }
 
