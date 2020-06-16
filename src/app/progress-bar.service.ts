@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ProgressBar {
   show = false;
+  mode: 'determinate' | 'indeterminate' | 'buffer' | 'query' = 'indeterminate';
+  value: number;
 
   constructor() { }
 }

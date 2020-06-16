@@ -126,14 +126,16 @@ export class PictureUploadComponent implements OnInit {
       this.dialogRef.close();
       this.postButton.nativeElement.disabled = true;
       this.progressBar.show = true;
+      this.progressBar.mode = 'determinate';
 
       const pictureId = /(.*?)-/.exec(uuidv4())[1];
       try {
-        await this.storage.upload(`/pictures/${pictureId}`, this.file, {
+        const task = this.storage.upload(`/pictures/${pictureId}`, this.file, {
           customMetadata: {
             owner: userId
           }
         });
+        task.percentageChanges().subscribe(percent => this.progressBar.value = percent);
         const pictureDoc = this.firestore.collection('pictures').doc(pictureId);
         const tags = [];
         this.tags.forEach(tag => {
@@ -163,6 +165,7 @@ export class PictureUploadComponent implements OnInit {
 
         this.openDialog(errorMessage);
       } finally {
+        this.progressBar.mode = 'indeterminate';
         this.progressBar.show = false;
       }
 

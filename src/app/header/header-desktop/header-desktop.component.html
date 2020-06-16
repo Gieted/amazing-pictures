@@ -28,5 +28,5 @@
       <div *ngIf="accountService.user === undefined" id="profile-picture-placeholder"></div>
     </div>
   </mat-toolbar>
-  <mat-progress-bar *ngIf="progressBar.show" mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar *ngIf="progressBar.show" [mode]="progressBar.mode" [value]="progressBar.value"></mat-progress-bar>
 </div>
