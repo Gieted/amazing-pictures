@@ -1,4 +1,4 @@
-<mat-progress-bar *ngIf="progressBar.show" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="progressBar.show" [mode]="progressBar.mode" [value]="progressBar.value"></mat-progress-bar>
 <mat-card class="mat-elevation-z2" (keydown)="onKeyDown($event)"
           [style.top]="hide ? '-70px' : '0'">
   <a mat-icon-button routerLink="" (click)="homePressed.emit()">
