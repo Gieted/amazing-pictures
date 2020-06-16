@@ -80,7 +80,9 @@ export class ProfileService {
       return null;
     }
 
-    profileData.profilePictureUrl = await this.storage.ref('users').child(id).child('profile-picture').getDownloadURL().toPromise();
+    try {
+      profileData.profilePictureUrl = await this.storage.ref('users').child(id).child('profile-picture').getDownloadURL().toPromise();
+    } catch (e) { }
 
     this.profileCache.set(id, profileData as Profile);
     return profileData as Profile;
