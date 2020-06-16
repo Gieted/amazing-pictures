@@ -3,6 +3,7 @@ img {
   image-orientation: from-image;
   object-fit: cover;
   font-size: 0;
+  opacity: 0;
 }
 
 mat-spinner {
@@ -19,6 +20,7 @@ mat-spinner {
 
 #image-box {
   cursor: pointer;
+  background-color: hsl(0, 0%, 89%);
 }
 
 #image-shadow {

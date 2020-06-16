@@ -20,6 +20,7 @@ export class FillParentDirective implements OnInit {
       } else {
         this.element.style.width = '100%';
       }
+      this.element.style.opacity = 1;
     });
   }
 
