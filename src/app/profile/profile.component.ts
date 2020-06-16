@@ -30,7 +30,10 @@ export class ProfileComponent implements OnInit {
 
     accountService.onSignIn.subscribe(this.detectMe.bind(this));
     accountService.onSingOut.subscribe(this.detectMe.bind(this));
-    profileService.profileEdit.subscribe(this.refresh.bind(this));
+    profileService.profileEdit.subscribe(async () => {
+      await profileService.getProfile(this.id, true);
+      await this.refresh();
+    });
     route.params.subscribe(async params => {
       this.id = params.profileId;
       this.imageView = params.pictureId;

@@ -69,8 +69,8 @@ export class ProfileService {
     });
   }
 
-  async getProfile(id: string): Promise<Profile | null> {
-    if (this.profileCache.get(id)) {
+  async getProfile(id: string, forceReFetch = false): Promise<Profile | null> {
+    if (this.profileCache.get(id) && !forceReFetch) {
       return this.profileCache.get(id);
     }
 
