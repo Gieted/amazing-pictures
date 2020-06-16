@@ -127,7 +127,7 @@ export class PictureUploadComponent implements OnInit {
       this.postButton.nativeElement.disabled = true;
       this.progressBar.show = true;
 
-      const pictureId = /(.*)-/.exec(uuidv4())[1];
+      const pictureId = /(.*?)-/.exec(uuidv4())[1];
       try {
         await this.storage.upload(`/pictures/${pictureId}`, this.file, {
           customMetadata: {
