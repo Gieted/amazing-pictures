@@ -36,11 +36,10 @@ import { DeleteDialogComponent } from './profile/delete-dialog/delete-dialog.com
 import { PictureUploadComponent } from './picture-upload/picture-upload.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { SquareDirective } from './square.directive';
 import { HighlightDirective } from './highlight.directive';
-import { FillParentDirective } from './fill-parent.directive';
 import { PictureViewComponent } from './browser/picture-view/picture-view.component';
 import { PictureDeleteComponent } from './browser/picture-view/picture-delete/picture-delete.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -59,9 +58,7 @@ import { PictureDeleteComponent } from './browser/picture-view/picture-delete/pi
     HeaderMobileComponent,
     DeleteDialogComponent,
     PictureUploadComponent,
-    SquareDirective,
     HighlightDirective,
-    FillParentDirective,
     PictureViewComponent,
     PictureDeleteComponent,
   ],
@@ -86,6 +83,7 @@ import { PictureDeleteComponent } from './browser/picture-view/picture-delete/pi
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MatChipsModule,
     MatAutocompleteModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

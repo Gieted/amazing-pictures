@@ -1,20 +1,10 @@
-:host {
-  margin-right: -3px;
-}
-
-#content {
-  flex-wrap: wrap;
-  display: flex;
-  flex: 1;
-  align-content: center;
-}
-
 img {
-  width: 100%;
   user-select: none;
   image-orientation: from-image;
   object-fit: cover;
   font-size: 0;
+  height: 100%;
+  width: 100%;
 }
 
 mat-spinner {
@@ -30,20 +20,12 @@ mat-spinner {
 }
 
 #image-box {
-  flex: 1;
-  min-width: 100px;
-  max-width: 250px;
-  height: 100px;
-  overflow: hidden;
-  margin-right: 3px;
-  margin-bottom: 3px;
-  align-items: center;
-  display: flex;
   cursor: pointer;
 }
 
 #image-shadow {
   height: inherit;
+  width: 100%;
   position: absolute;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.26), transparent 56px, transparent);
   opacity: 0;

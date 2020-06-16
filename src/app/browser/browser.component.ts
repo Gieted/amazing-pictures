@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { BrowserService } from './browser.service';
 import { ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
@@ -16,6 +16,8 @@ export class BrowserComponent implements OnInit {
   touchScreen = ('ontouchstart' in window);
 
   profileId?: string;
+
+  colsCount: number;
 
   profileFilter: (picture: Picture) => boolean = (picture: Picture) => {
     if (this.profileId) {
@@ -39,6 +41,15 @@ export class BrowserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.onResize();
+  }
 
+  @HostListener('window:resize')
+  onResize() {
+    if (window.innerWidth < 740) {
+      this.colsCount = window.innerWidth / 100;
+    } else {
+      this.colsCount = window.innerWidth / 200;
+    }
   }
 }

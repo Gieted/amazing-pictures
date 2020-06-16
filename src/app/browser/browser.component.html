@@ -1,10 +1,11 @@
-<div *ngIf="!browserService.loading" id="content">
-  <div *ngFor="let picture of browserService.filteredPictures.filter(profileFilter)" appSquare id="image-box"
+<mat-grid-list *ngIf="!browserService.loading" id="content" [cols]="colsCount" gutterSize="3">
+  <mat-grid-tile *ngFor="let picture of browserService.filteredPictures.filter(profileFilter)" id="image-box"
        [routerLink]="(profileId ? '/profile/' + profileId : '') + '/picture/' + picture.id">
     <div appHighlight id="image-shadow" [className]="touchScreen ? 'touchScreen' : ''"></div>
-    <img appFillParent [alt]="picture.title" [src]="picture.url">
-  </div>
-</div>
+    <img [alt]="picture.title" [src]="picture.url">
+  </mat-grid-tile>
+</mat-grid-list>
+
 
 <div *ngIf="browserService.loading" id="spinner-wrapper">
   <mat-spinner mode="indeterminate"></mat-spinner>
