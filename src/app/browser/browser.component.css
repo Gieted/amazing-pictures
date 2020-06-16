@@ -3,8 +3,6 @@ img {
   image-orientation: from-image;
   object-fit: cover;
   font-size: 0;
-  height: 100%;
-  width: 100%;
 }
 
 mat-spinner {

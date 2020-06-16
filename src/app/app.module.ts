@@ -40,6 +40,7 @@ import { HighlightDirective } from './highlight.directive';
 import { PictureViewComponent } from './browser/picture-view/picture-view.component';
 import { PictureDeleteComponent } from './browser/picture-view/picture-delete/picture-delete.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { FillParentDirective } from './fill-parent.directive';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HighlightDirective,
     PictureViewComponent,
     PictureDeleteComponent,
+    FillParentDirective,
+    FillParentDirective,
   ],
   imports: [
     BrowserModule,

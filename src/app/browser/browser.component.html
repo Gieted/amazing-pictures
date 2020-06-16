@@ -2,10 +2,9 @@
   <mat-grid-tile *ngFor="let picture of browserService.filteredPictures.filter(profileFilter)" id="image-box"
        [routerLink]="(profileId ? '/profile/' + profileId : '') + '/picture/' + picture.id">
     <div appHighlight id="image-shadow" [className]="touchScreen ? 'touchScreen' : ''"></div>
-    <img [alt]="picture.title" [src]="picture.url">
+    <img appFillParent [alt]="picture.title" [src]="picture.url">
   </mat-grid-tile>
 </mat-grid-list>
-
 
 <div *ngIf="browserService.loading" id="spinner-wrapper">
   <mat-spinner mode="indeterminate"></mat-spinner>
