@@ -6,6 +6,7 @@ input {
   flex: 1;
   background-color: transparent;
   min-width: 0;
+  height: 100%;
 }
 
 mat-card {

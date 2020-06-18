@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SearchService } from '../search.service';
+import { SearchService } from '../../../search.service';
 import { NavigationStart, Router } from '@angular/router';
 
 @Component({
