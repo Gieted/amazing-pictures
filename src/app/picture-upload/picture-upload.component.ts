@@ -136,6 +136,8 @@ export class PictureUploadComponent implements OnInit {
           }
         });
         task.percentageChanges().subscribe(percent => this.progressBar.value = percent);
+        await task;
+        this.progressBar.mode = 'indeterminate';
         const pictureDoc = this.firestore.collection('pictures').doc(pictureId);
         const tags = [];
         this.tags.forEach(tag => {
