@@ -28,6 +28,7 @@ button#sing-in mat-icon {
   overflow: hidden;
   user-select: none;
   display: flex;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
 }

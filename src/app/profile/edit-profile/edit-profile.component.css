@@ -35,6 +35,7 @@ mat-form-field {
   user-select: none;
   overflow: hidden;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 

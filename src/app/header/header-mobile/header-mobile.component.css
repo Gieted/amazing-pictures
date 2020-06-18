@@ -42,6 +42,7 @@ mat-card mat-icon {
   cursor: pointer;
   user-select: none;
   display: flex;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
 }
