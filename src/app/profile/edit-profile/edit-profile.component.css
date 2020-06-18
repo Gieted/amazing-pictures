@@ -21,18 +21,23 @@ mat-form-field {
 }
 
 #profile-picture {
+  image-orientation: from-image;
+  font-size: 0;
+}
+
+#picture-wrapper {
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   position: absolute;
-  image-orientation: from-image;
   border-radius: 100%;
-  object-fit: cover;
-  object-position: center;
   user-select: none;
-  font-size: 0;
-  top: 0;
-  left: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
+
 
 #picture-input {
   position: absolute;

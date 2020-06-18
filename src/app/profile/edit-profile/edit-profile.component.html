@@ -4,8 +4,10 @@
   <form id="profile-form" [formGroup]="profile" (ngSubmit)="updateProfile()">
     <div id="picture-upload-section">
       <button *ngIf="!uploadTask" mat-icon-button [class]="'upload-photo' + (touchScreen ? ' touchScreen' : '')" (click)="selectPicture()" type="button">
-        <img id="profile-picture" *ngIf="accountService.user?.photoURL" [src]="accountService.user.photoURL"
-             alt="Profile picture">
+        <span *ngIf="accountService.user?.photoURL" id="picture-wrapper">
+          <img appFillParent id="profile-picture" [src]="accountService.user.photoURL"
+               alt="Profile picture">
+        </span>
         <span id="icon-wrapper">
           <mat-icon [className]="accountService.user?.photoURL ? 'hidden' : ''">add_a_photo</mat-icon>
         </span>
