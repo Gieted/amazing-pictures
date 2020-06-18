@@ -34,6 +34,7 @@ a {
 
 *:focus {
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .align-right {
