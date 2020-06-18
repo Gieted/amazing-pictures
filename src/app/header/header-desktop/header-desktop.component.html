@@ -18,9 +18,10 @@
         <mat-icon>account_circle</mat-icon><span>SIGN IN</span>
       </span>
       </button>
-      <img class="profile-picture" *ngIf="accountService.user"
-           [src]="accountService.user.photoURL || defaultProfilePictureUrl" alt="profile-picture"
-           [mat-menu-trigger-for]="accountMenu">
+      <div id="picture-wrapper" *ngIf="accountService.user" [mat-menu-trigger-for]="accountMenu">
+        <img appFillParent class="profile-picture"
+             [src]="accountService.user.photoURL || defaultProfilePictureUrl" alt="profile-picture">
+      </div>
       <mat-menu #accountMenu>
         <a mat-menu-item [routerLink]="'profile/' + accountService.user?.uid">Profile</a>
         <button mat-menu-item (click)="accountService.signOut()">Sign out</button>

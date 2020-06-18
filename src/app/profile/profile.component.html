@@ -1,9 +1,11 @@
 <div *ngIf="profile" id="profile">
   <div id="profile-card">
     <mat-card class="mat-elevation-z3">
-      <div>
+      <div id="card-content">
         <h1 *ngIf="me" id="title">My profile</h1>
-        <img alt="Profile picture" id="picture" [src]="pictureUrl || defaultProfilePictureUrl">
+        <div id="picture-wrapper">
+          <img appFillParent alt="Profile picture" id="picture" [src]="pictureUrl || defaultProfilePictureUrl">
+        </div>
         <div id="name">{{ profile.displayName }}</div>
       </div>
       <button *ngIf="me" mat-icon-button id="more" [mat-menu-trigger-for]="menu">

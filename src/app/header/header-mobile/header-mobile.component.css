@@ -31,15 +31,19 @@ mat-card mat-icon {
 }
 
 .profile-picture {
+  font-size: 0;
+  image-orientation: from-image;
+}
+
+#picture-wrapper {
   height: 30px;
   width: 30px;
   border-radius: 100%;
   cursor: pointer;
-  font-size: 0;
-  object-fit: cover;
-  object-position: center;
   user-select: none;
-  image-orientation: from-image;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 #profile-picture-placeholder {

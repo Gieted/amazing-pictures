@@ -8,12 +8,14 @@
   <button mat-icon-button id="clear" *ngIf="displayClear" (click)="clear()" (mousedown)="$event.preventDefault()">
     <mat-icon>clear</mat-icon>
   </button>
-  <img class="profile-picture" *ngIf="accountService.user !== undefined && !accountService.user"
-       (click)="accountService.openSingInDialog()"
-       alt="Sing in" [src]="defaultProfilePictureUrl">
-  <img class="profile-picture" *ngIf="accountService.user"
-       [src]="accountService.user.photoURL || defaultProfilePictureUrl" alt="Profile picture"
-       [mat-menu-trigger-for]="accountMenu">
+  <div id="picture-wrapper">
+    <img appFillParent class="profile-picture" *ngIf="accountService.user !== undefined && !accountService.user"
+         (click)="accountService.openSingInDialog()"
+         alt="Sing in" [src]="defaultProfilePictureUrl">
+    <img appFillParent class="profile-picture" *ngIf="accountService.user"
+         [src]="accountService.user.photoURL || defaultProfilePictureUrl" alt="Profile picture"
+         [mat-menu-trigger-for]="accountMenu">
+  </div>
   <mat-menu #accountMenu>
     <a mat-menu-item [routerLink]="'profile/' + accountService.user?.uid">Profile</a>
     <button mat-menu-item (click)="accountService.signOut()">Sign out</button>

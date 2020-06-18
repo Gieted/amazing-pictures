@@ -17,15 +17,19 @@ button#sing-in mat-icon {
 }
 
 .profile-picture {
+  font-size: 0;
+  image-orientation: from-image;
+}
+
+#picture-wrapper {
   height: 40px;
   width: 40px;
   border-radius: 100%;
-  cursor: pointer;
-  font-size: 0;
-  object-fit: cover;
-  object-position: center;
+  overflow: hidden;
   user-select: none;
-  image-orientation: from-image;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 #profile-picture-placeholder {

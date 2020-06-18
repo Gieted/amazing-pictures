@@ -9,13 +9,15 @@
 <div id="info" *ngIf="picture">
   <div id="title">{{ picture.title }}</div>
   <div *ngIf="profile" id="profile" [routerLink]="'/profile/' + picture.authorId">
-    <img id="profile-picture" [src]="profilePicUrl || defaultProfilePictureUrl" alt="Picture author profile picture">
+    <div id="picture-wrapper">
+      <img appFillParent id="profile-picture" [src]="profilePicUrl || defaultProfilePictureUrl" alt="Picture author profile picture">
+    </div>
     <span id="profile-name">{{ profile.displayName }}</span>
   </div>
 </div>
 
 <div id="shadow-up"></div>
 <div id="shadow-down"></div>
-<img *ngIf="picture" [src]="picture.url" [alt]="picture.title">
+<img id="picture" *ngIf="picture" [src]="picture.url" [alt]="picture.title">
 
 <mat-spinner *ngIf="!picture" mode="indeterminate"></mat-spinner>
