@@ -12,7 +12,6 @@ import { PictureDeleteService } from './picture-delete.service';
 export class PictureDeleteComponent implements OnInit {
   @ViewChild('deleteButton', { read: ElementRef }) readonly deleteButton: ElementRef<HTMLButtonElement>;
 
-
   id: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any,

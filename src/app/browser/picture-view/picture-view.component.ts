@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BrowserService } from '../browser.service';
 import Picture from '../../pictures/Picture';
 import { AccountService } from '../../account.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PictureDeleteComponent } from './picture-delete/picture-delete.component';
 import Profile from '../../profile/Profile';
 import { ProfileService } from '../../profile/profile.service';
@@ -21,6 +21,7 @@ export class PictureViewComponent implements OnInit {
   my: boolean;
   profile: Profile;
   profilePicUrl: string;
+  dialogRef: MatDialogRef<PictureDeleteComponent>;
 
   constructor(route: ActivatedRoute,
               private browserService: BrowserService,
@@ -51,17 +52,22 @@ export class PictureViewComponent implements OnInit {
   }
 
   delete(): void {
-    this.dialog.open(PictureDeleteComponent, {
+    this.dialogRef = this.dialog.open(PictureDeleteComponent, {
       autoFocus: false,
       restoreFocus: false,
       data: { id: this.id }
     });
+    this.dialogRef.afterClosed().subscribe(() => this.dialogRef = null);
   }
 
   @HostListener('window:keydown', ['$event'])
   async onKeyDown(event): Promise<void> {
-    if (event.key === 'Escape') {
-      await this.goBack();
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    } else {
+      if (event.key === 'Escape') {
+        await this.goBack();
+      }
     }
   }
 
