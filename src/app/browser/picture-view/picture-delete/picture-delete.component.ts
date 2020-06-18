@@ -39,6 +39,7 @@ export class PictureDeleteComponent implements OnInit {
 
   async delete() {
     this.dialogRef.close();
+    this.deleteButton.nativeElement.disabled = true;
 
     await this.pictureDeleteService.deletePicture(this.id);
 
