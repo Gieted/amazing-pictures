@@ -65,6 +65,7 @@ mat-spinner {
 #picture {
   image-orientation: from-image;
   font-size: 0;
+  opacity: 0;
 }
 
 #picture-wrapper {
