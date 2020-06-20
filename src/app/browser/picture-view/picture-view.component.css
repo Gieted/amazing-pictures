@@ -130,6 +130,7 @@ img#picture {
 #profile-picture {
   font-size: 0;
   image-orientation: from-image;
+  opacity: 0;
 }
 
 #picture-wrapper {
