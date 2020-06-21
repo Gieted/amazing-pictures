@@ -10,14 +10,24 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AccountDialogComponent implements OnInit {
   readonly SingInMode = SingInMode;
 
-  mode: SingInMode;
+  // tslint:disable-next-line:variable-name
+  private _mode: SingInMode;
   email?: string;
   errorMessage?: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-    this.mode = data.mode;
+    this._mode = data.mode;
     this.email = data.email;
     this.errorMessage = data.errorMessage;
+  }
+
+  get mode() {
+    return this._mode;
+  }
+
+  set mode(value) {
+    this._mode = value;
+    this.errorMessage = null;
   }
 
   ngOnInit(): void {
