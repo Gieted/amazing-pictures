@@ -75,4 +75,8 @@ export class PictureViewComponent implements OnInit {
     const url = this.router.url;
     await this.router.navigateByUrl(/(.*)\/picture/.exec(url)[1]);
   }
+
+  onLoad(event): void {
+    event.target.style.opacity = 1;
+  }
 }

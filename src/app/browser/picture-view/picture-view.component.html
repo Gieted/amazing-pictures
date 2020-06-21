@@ -18,6 +18,6 @@
 
 <div id="shadow-up"></div>
 <div id="shadow-down"></div>
-<img id="picture" *ngIf="picture" [src]="picture.url" [alt]="picture.title">
+<img id="picture" *ngIf="picture" [src]="picture.url" [alt]="picture.title" (load)="onLoad($event)">
 
 <mat-spinner *ngIf="!picture" mode="indeterminate"></mat-spinner>
