@@ -37,6 +37,7 @@ export class HeaderMobileComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.displayRefresh = this.router.url === '/';
     this.search.valueChanges.subscribe(() => this.onInput());
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -62,7 +63,6 @@ export class HeaderMobileComponent implements OnInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        console.log(this.router.url);
         this.displayRefresh = this.router.url === '/';
       }
     });

@@ -53,3 +53,13 @@ button#sing-in mat-icon {
 #picture-input {
   display: none;
 }
+
+div#brand {
+  height: 100%;
+}
+
+#brand a {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}

@@ -1,7 +1,9 @@
 <div class="fixed-wrapper">
   <mat-toolbar>
-    <div>
-      <a routerLink="" (click)="homePressed.emit()">Amazing Pictures</a>
+    <div id="brand">
+      <a routerLink="" (click)="homePressed.emit()">
+        <span>Amazing Pictures</span>
+      </a>
     </div>
     <div id="search">
       <app-search-box [homePressed]="homePressed"></app-search-box>
