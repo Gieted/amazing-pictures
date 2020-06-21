@@ -4,7 +4,7 @@ import { AccountService } from '../../account.service';
 import { ProgressBar } from '../../progress-bar.service';
 import { PictureUploadService } from '../../picture-upload/picture-upload.service';
 import { SearchService } from '../../search.service';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-mobile',
@@ -15,6 +15,8 @@ export class HeaderMobileComponent implements OnInit {
   readonly defaultProfilePictureUrl = 'assets/images/default-profile-picture.png';
   displayClear: boolean;
   readonly search = new FormControl();
+
+  displayRefresh = false;
 
   hide: boolean;
   private lastHeight = 0;
@@ -55,6 +57,13 @@ export class HeaderMobileComponent implements OnInit {
         this.pictureView = false;
       } else {
         this.clear();
+      }
+    });
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        console.log(this.router.url);
+        this.displayRefresh = this.router.url === '/';
       }
     });
   }

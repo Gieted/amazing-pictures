@@ -2,7 +2,8 @@
 <mat-card class="mat-elevation-z2" (keydown)="onKeyDown($event)"
           [style.top]="hide ? '-70px' : '0'">
   <a mat-icon-button routerLink="" (click)="homePressed.emit()">
-    <mat-icon>home</mat-icon>
+    <mat-icon *ngIf="!displayRefresh">home</mat-icon>
+    <mat-icon *ngIf="displayRefresh">refresh</mat-icon>
   </a>
   <input #input aria-label="Search" placeholder="Search" [formControl]="search">
   <button mat-icon-button id="clear" *ngIf="displayClear" (click)="clear()" (mousedown)="$event.preventDefault()">
