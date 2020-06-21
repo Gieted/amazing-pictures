@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
     accountService.onSignIn.subscribe(this.detectMe.bind(this));
     accountService.onSingOut.subscribe(this.detectMe.bind(this));
     profileService.profileEdit.subscribe(async () => {
+      this.profile = undefined;
       await profileService.getProfile(this.id, true);
       await this.refresh();
     });
