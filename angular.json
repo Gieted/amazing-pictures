@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "amazing-pictures"
+  "defaultProject": "amazing-pictures",
+  "cli": {
+    "analytics": false
+  }
 }
