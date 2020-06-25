@@ -121,6 +121,13 @@ export class PictureUploadComponent implements OnInit {
   }
 
   async post() {
+    const value = this.tagInput.nativeElement.value;
+    if (value) {
+      this.tags.push(value.trim());
+    }
+    this.tagInput.nativeElement.value = '';
+    this.filterRecentTags();
+
     if (this.uploadForm.valid) {
       const userId = this.accountService.user.uid;
       this.dialogRef.close();
