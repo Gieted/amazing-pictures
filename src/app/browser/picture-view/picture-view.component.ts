@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PictureDeleteComponent } from './picture-delete/picture-delete.component';
 import Profile from '../../profile/Profile';
 import { ProfileService } from '../../profile/profile.service';
+import { NavigationService } from '../../navigation.service'
 
 @Component({
   selector: 'app-picture-view',
@@ -28,7 +29,8 @@ export class PictureViewComponent implements OnInit {
               private accountService: AccountService,
               private dialog: MatDialog,
               private router: Router,
-              private profileService: ProfileService) {
+              private profileService: ProfileService,
+              public navigation: NavigationService) {
 
     route.params.subscribe(async params => {
       this.id = params.pictureId;
@@ -66,14 +68,9 @@ export class PictureViewComponent implements OnInit {
       this.dialogRef.close();
     } else {
       if (event.key === 'Escape') {
-        await this.goBack();
+        await this.navigation.goBack();
       }
     }
-  }
-
-  async goBack(): Promise<void> {
-    const url = this.router.url;
-    await this.router.navigateByUrl(/(.*)\/picture/.exec(url)[1]);
   }
 
   onLoad(event): void {

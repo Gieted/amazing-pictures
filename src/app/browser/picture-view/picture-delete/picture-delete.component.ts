@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { Router } from '@angular/router';
 import { BrowserService } from '../../browser.service';
 import { PictureDeleteService } from './picture-delete.service';
+import { NavigationService } from '../../../navigation.service'
 
 @Component({
   selector: 'app-picture-delete',
@@ -19,7 +20,8 @@ export class PictureDeleteComponent implements OnInit {
               private dialog: MatDialog,
               private router: Router,
               private browserService: BrowserService,
-              private pictureDeleteService: PictureDeleteService) {
+              private pictureDeleteService: PictureDeleteService,
+              private navigation: NavigationService) {
 
     this.id = data.id;
   }
@@ -42,7 +44,7 @@ export class PictureDeleteComponent implements OnInit {
 
     await this.pictureDeleteService.deletePicture(this.id);
 
-    await this.router.navigateByUrl('');
+    this.navigation.goBack().catch(console.error)
     await this.browserService.refreshPictures();
   }
 }
